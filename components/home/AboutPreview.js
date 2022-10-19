@@ -10,10 +10,12 @@ const AboutPreview = () => {
     return (
         <Box className="section">
             <Container maxWidth="lg">
-                <DecorativeHeader
-                    text="ABOUT US"
-                    image={eventsPreviewContent.bigDividerImage}
-                />
+                <Box sx={{ marginBottom: "4rem" }}>
+                    <DecorativeHeader
+                        text="ABOUT US"
+                        image={eventsPreviewContent.bigDividerImage}
+                    />
+                </Box>
                 <Grid container spacing={6}>
                     <Grid item xs={12} md={6}>
                         <Box

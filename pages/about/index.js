@@ -38,7 +38,7 @@ const index = () => {
                         <Typography sx={{ whiteSpace: "pre-wrap" }}>
                             {aboutContent.content}
                         </Typography>
-                        <List dense>
+                        <List dense sx={{ paddingLeft: "1rem" }}>
                             <ListItem
                                 sx={{
                                     listStyleType: "disc",

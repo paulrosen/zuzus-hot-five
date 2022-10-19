@@ -16,10 +16,12 @@ const EventsPreview = () => {
             sx={{ background: theme.palette.background.accent }}
         >
             <Container maxWidth="lg">
-                <DecorativeHeader
-                    text="UPCOMING EVENTS"
-                    image={eventsPreviewContent.bigDividerImage}
-                />
+                <Box sx={{ marginBottom: "4rem" }}>
+                    <DecorativeHeader
+                        text="UPCOMING EVENTS"
+                        image={eventsPreviewContent.bigDividerImage}
+                    />
+                </Box>
                 <Grid container spacing={6} sx={{ position: "relative" }}>
                     <Grid item xs={12} md={5}>
                         <Box className="sticky">

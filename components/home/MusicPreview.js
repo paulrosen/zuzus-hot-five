@@ -10,12 +10,14 @@ import { ArrowRightAlt } from "@mui/icons-material";
 
 const MusicPreview = ({ musicPreviewContent, reverse, variation }) => {
     return (
-        <Box className="section">
-            <Container maxWidth="xl">
-                <DecorativeHeader
-                    image={eventsPreviewContent.bigDividerImage}
-                    text="MUSIC"
-                />
+        <Box>
+            <Container className="section" maxWidth="xl">
+                <Box sx={{ marginBottom: "4rem" }}>
+                    <DecorativeHeader
+                        image={eventsPreviewContent.bigDividerImage}
+                        text="MUSIC"
+                    />
+                </Box>
                 <Grid
                     container
                     spacing={10}

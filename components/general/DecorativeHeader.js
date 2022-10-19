@@ -26,7 +26,7 @@ const DecorativeHeader = ({ image, text }) => {
                 sx={{
                     display: "flex",
                     justifyContent: "center",
-                    marginBottom: "4rem",
+                    // marginBottom: "4rem",
                     // transform: "scaleY(-1)",
                 }}
             >

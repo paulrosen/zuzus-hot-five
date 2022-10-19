@@ -8,7 +8,6 @@ const BlockPhoto = ({ blockPhotoContent, reverse }) => {
     return (
         <Grid
             container
-            spacing={6}
             wrap={reverse ? "wrap-reverse" : "wrap"}
             sx={{ backgroundColor: theme.palette.background.accent }}
         >
@@ -24,32 +23,30 @@ const BlockPhoto = ({ blockPhotoContent, reverse }) => {
                             justifyContent: "center",
                             alignItems: "center",
                             height: "100%",
+                            width: "100%",
                             padding: "2rem 0",
                         }}
                     >
+                        <Typography sx={{ textAlign: "center" }}>
+                            {blockPhotoContent.title}
+                        </Typography>
+                        <Typography
+                            variant="h2"
+                            component="h6"
+                            sx={{ marginBottom: ".25em", textAlign: "center" }}
+                        >
+                            {blockPhotoContent.content}
+                        </Typography>
                         <Box>
-                            <Typography>{blockPhotoContent.title}</Typography>
-                            <br />
-                            <Typography
-                                variant="h2"
-                                component="h6"
-                                sx={{ marginBottom: ".25em" }}
-                            >
-                                {blockPhotoContent.content}
-                            </Typography>
-                            <Box>
-                                <Link href={blockPhotoContent.button.href}>
-                                    <Button
-                                        variant={
-                                            blockPhotoContent.button.variant
-                                        }
-                                        size="large"
-                                        color="secondary"
-                                    >
-                                        {blockPhotoContent.button.text}
-                                    </Button>
-                                </Link>
-                            </Box>
+                            <Link href={blockPhotoContent.button.href}>
+                                <Button
+                                    variant={blockPhotoContent.button.variant}
+                                    size="large"
+                                    color="secondary"
+                                >
+                                    {blockPhotoContent.button.text}
+                                </Button>
+                            </Link>
                         </Box>
                     </Box>
                 </Container>
