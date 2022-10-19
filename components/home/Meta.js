@@ -17,6 +17,11 @@ const Meta = () => {
                     name="keywords"
                     content="music, grunge, pop, alternative, live music, concert, gig, guitar, rock, band, group, show"
                 />
+                <link rel="icon" href="/images/zuzuLogoCropped.png" />
+                <link
+                    rel="apple-touch-icon"
+                    href="/images/zuzuLogoCropped.png"
+                />
                 <meta
                     name="description"
                     content="Basement Pop Cover Band"

@@ -165,7 +165,6 @@ const Navbar = () => {
                                         display: { xs: "flex", xl: "none" },
                                         fontSize: "1.75rem",
                                         textAlign: "center",
-                                        fontWeight: 700,
                                         transition: "1000ms",
                                         color: theme.palette.custom.light,
                                     }}

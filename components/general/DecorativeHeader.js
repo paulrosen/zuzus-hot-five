@@ -10,7 +10,7 @@ const DecorativeHeader = ({ image, text }) => {
                     display: "flex",
                     justifyContent: "center",
                     // marginBottom: "2rem",
-                    // transform: "scaleY(-1)",
+                    transform: "scaleY(-1)",
                 }}
             >
                 <NativeImage image={image} maxSize={300} />
@@ -18,7 +18,7 @@ const DecorativeHeader = ({ image, text }) => {
             <Typography
                 variant="h2"
                 component="h3"
-                sx={{ textAlign: "center", marginBottom: ".25em" }}
+                sx={{ textAlign: "center" }}
             >
                 {text}
             </Typography>
@@ -27,7 +27,7 @@ const DecorativeHeader = ({ image, text }) => {
                     display: "flex",
                     justifyContent: "center",
                     marginBottom: "4rem",
-                    transform: "scaleY(-1)",
+                    // transform: "scaleY(-1)",
                 }}
             >
                 <NativeImage image={image} maxSize={300} />

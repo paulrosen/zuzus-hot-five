@@ -10,10 +10,7 @@ import { ArrowRightAlt } from "@mui/icons-material";
 
 const MusicPreview = ({ musicPreviewContent, reverse, variation }) => {
     return (
-        <Box
-            className="section"
-            sx={{ backgroundColor: musicPreviewContent.backgroundColor }}
-        >
+        <Box className="section">
             <Container maxWidth="xl">
                 <DecorativeHeader
                     image={eventsPreviewContent.bigDividerImage}
@@ -56,17 +53,7 @@ const MusicPreview = ({ musicPreviewContent, reverse, variation }) => {
                                 >
                                     {musicPreviewContent.title}
                                 </Typography>
-                                {/* <br />
-                                <Typography
-                                    sx={{
-                                        textAlign: {
-                                            xs: "center",
-                                            lg: reverse ? "start" : "end",
-                                        },
-                                    }}
-                                >
-                                    {musicPreviewContent.content}
-                                </Typography> */}
+
                                 <br />
                                 {musicPreviewContent.songs.map(
                                     (song, index) => {

@@ -14,7 +14,7 @@ import lightTheme from "./styles/themes/theme";
 
 // 1. Meta
 
-const siteName = "SNACKBAR";
+const siteName = "Zuzu's Hot Five";
 // const siteName = "Cosima Hewes";
 
 // 2. Layout
@@ -38,7 +38,7 @@ const header = {
 
 const heroContent = {
     image: {
-        url: "/images/snackbarhero.webp",
+        url: "/images/zuzus5.webp",
         alt: "Greg and Emily rocking out",
     },
     title: "YOUR NAME",
@@ -236,7 +236,7 @@ const mosaicSectionContentThree = {
 };
 const musicPreviewContent = {
     backgroundColor: "white",
-    title: "Basement Grunge Pop",
+    title: "1920's Trad Jazz",
     songs: [
         { url: "/songs/muskrat-ramble.mp3", name: "Muskrat Ramble" },
         { url: "/songs/muskrat-ramble.mp3", name: "Muskrat Ramble" },
@@ -250,12 +250,12 @@ const musicPreviewContent = {
         variant: "contained",
     },
     images: [
-        { url: "/images/snackbar3.webp", alt: "alt snackbar2 text" },
-        { url: "/images/snackbar4.webp", alt: "alt snackbar2 text" },
-        { url: "/images/snackbar5.webp", alt: "alt snackbar2 text" },
-        { url: "/images/snackbar6.webp", alt: "alt snackbar2 text" },
-        { url: "/images/snackbar7.webp", alt: "alt snackbar2 text" },
-        { url: "/images/snackbar8.webp", alt: "alt snackbar2 text" },
+        { url: "/images/zuzus2.webp", alt: "alt zuzus2 text" },
+        { url: "/images/zuzus4.webp", alt: "alt zuzus2 text" },
+        { url: "/images/zuzus6.webp", alt: "alt zuzus2 text" },
+        { url: "/images/zuzus3.webp", alt: "alt zuzus2 text" },
+        { url: "/images/zuzus7.webp", alt: "alt zuzus2 text" },
+        { url: "/images/zuzus8.webp", alt: "alt zuzus2 text" },
     ],
 };
 
@@ -269,7 +269,7 @@ const blockPhotoContentOne = {
         variant: "contained",
     },
     image: {
-        url: "/images/snackbarhero.webp",
+        url: "/images/zuzus1.webp",
         alt: "SNACKBAR rocking out",
     },
 };
@@ -307,13 +307,13 @@ const musicContent = {
 };
 
 const eventsPreviewContent = {
-    image: { url: "/images/snackbar2.webp", alt: "alt snackbar2 text" },
+    image: { url: "/images/zuzus10.webp", alt: "alt snackbar2 text" },
     bigDividerImage: {
-        url: "/images/decorativeBorder2.svg",
+        url: "/images/eventsBorder.svg",
         alt: "alt snackbar2 text",
     },
     dividerImage: {
-        url: "/images/eventsBorder2.svg",
+        url: "/images/divider2.svg",
         alt: "alt snackbar2 text",
     },
     title: "Upcoming Events",
@@ -432,8 +432,8 @@ const contactConfig = {
 
 const aboutContent = {
     image: {
-        url: "/images/snackbar1.webp",
-        alt: "Greg and Emily",
+        url: "/images/zuzus4.webp",
+        alt: "Zuzu's Hot Five",
     },
     name: "Good times, great music",
     buttons: [
