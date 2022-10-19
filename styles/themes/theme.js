@@ -65,6 +65,7 @@ theme = createTheme(theme, {
             // color: darkTheme.palette.custom.dark,
             fontSize: "clamp(3rem, 6vw, 10rem)",
             letterSpacing: ".025em",
+            lineHeight: "1em",
         },
         h3: {
             color: theme.palette.custom.primary,

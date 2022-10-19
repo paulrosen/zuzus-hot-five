@@ -26,16 +26,19 @@ const AboutPreview = () => {
                             }}
                         >
                             <Typography>
-                                SNACKBAR was formed in 2021 by guitarist and
-                                lead singer Greg Ochsenschlager, bassist Emily
-                                Patterson, drummer Dave Sorensen, and
-                                keyboardist Emma Bramer.
+                                For over 10 years, the Hot 5, fueled by the
+                                Traditioinal Jazz of Buddy Bolden, King Oliver,
+                                and Louis Armstrong, has supplied stomps, viper
+                                blues, and struts, summoning the rich musical
+                                history of NOLA and the roots of <em>Jass.</em>
                             </Typography>
                             <Typography>
-                                Playing a selection of covers ranging from The
-                                Ramones to The Dandy Warhols, SNACKBAR is
-                                guaranteed to liven any scene with their far-out
-                                sound and take-no-shit worldview.
+                                Add a Swing dance or a romantic ballad and
+                                you&apos;ve got High-Octane Gilded Age Madness!
+                            </Typography>
+                            <Typography>
+                                They&apos;ll blow your top until the last
+                                call&mdash;or until the joint&apos;s raided!
                             </Typography>
                             <Box
                                 sx={{

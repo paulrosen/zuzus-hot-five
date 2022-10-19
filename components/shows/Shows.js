@@ -1,4 +1,4 @@
-import { Grid, Typography } from "@mui/material";
+import { Box, Grid, Typography } from "@mui/material";
 import { Container } from "@mui/system";
 import React from "react";
 import useGetEvents from "../../hooks/useGetEvents";
@@ -17,14 +17,24 @@ const Shows = () => {
                     sx={{ position: "relative" }}
                 >
                     <Grid item xs={12} md={5}>
-                        <Typography
+                        <Box
                             className="sticky"
-                            variant="h2"
-                            component="body1"
-                            sx={{ marginBottom: ".5em" }}
+                            sx={{
+                                display: "flex",
+                                justifyContent: "end",
+                                paddingTop: "1rem",
+                            }}
                         >
-                            Upcoming:
-                        </Typography>
+                            <Typography
+                                variant="h3"
+                                component="body1"
+                                sx={{
+                                    marginBottom: ".5em",
+                                }}
+                            >
+                                Upcoming:
+                            </Typography>
+                        </Box>
                     </Grid>
                     <Grid item xs={12} md={7}>
                         {currentEvents && (
@@ -32,14 +42,22 @@ const Shows = () => {
                         )}
                     </Grid>
                     <Grid item xs={12} md={5}>
-                        <Typography
+                        <Box
                             className="sticky"
-                            variant="h2"
-                            component="body1"
-                            sx={{ marginBottom: ".5em" }}
+                            sx={{
+                                display: "flex",
+                                justifyContent: "end",
+                                paddingTop: "1rem",
+                            }}
                         >
-                            Past:
-                        </Typography>
+                            <Typography
+                                variant="h3"
+                                component="body1"
+                                sx={{ marginBottom: ".5em" }}
+                            >
+                                Past:
+                            </Typography>
+                        </Box>
                     </Grid>
                     <Grid item xs={12} md={7}>
                         {pastEvents && <EventsItems events={pastEvents} />}

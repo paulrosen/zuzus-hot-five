@@ -10,12 +10,24 @@ const index = () => {
             <Container maxWidth="lg" className="section">
                 <Grid container spacing={6}>
                     <Grid item xs={12} md={6}>
-                        <Typography variant="h3">Get in Touch</Typography>
+                        <Typography variant="h3">
+                            We&apos;ll take you there!
+                        </Typography>
                         <br />
                         <Typography>
-                            Interested in booking a show? Have a question? Let
-                            us know what we can help you with in the comment
-                            box, and we will get back to you soon!
+                            You name it&mdash;we&apos; kick your event into high
+                            gear. Galas, balls, beer and cider tastings, wine
+                            releases, street parties, barbecues, antique car
+                            shows, speakeasies, and festivals. Imagine your own
+                            little brass combo at your oyster roast, birthday,
+                            garden party or Oktoberfest; serenading your loved
+                            ones at Mother&apos;s or Father&apos;s Day, or on
+                            the bandstand on the 4th of July.
+                        </Typography>
+                        <br />
+                        <Typography>
+                            Of course, The Hot 5 is always up for dances,
+                            engagements, weddings, and anniversaries!
                         </Typography>
                     </Grid>
                     <Grid item xs={12} md={6}>

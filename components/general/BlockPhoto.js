@@ -8,6 +8,7 @@ const BlockPhoto = ({ blockPhotoContent, reverse }) => {
     return (
         <Grid
             container
+            spacing={6}
             wrap={reverse ? "wrap-reverse" : "wrap"}
             sx={{ backgroundColor: theme.palette.background.accent }}
         >
@@ -28,9 +29,11 @@ const BlockPhoto = ({ blockPhotoContent, reverse }) => {
                     >
                         <Box>
                             <Typography>{blockPhotoContent.title}</Typography>
+                            <br />
                             <Typography
                                 variant="h2"
-                                sx={{ marginBottom: ".5em" }}
+                                component="h6"
+                                sx={{ marginBottom: ".25em" }}
                             >
                                 {blockPhotoContent.content}
                             </Typography>

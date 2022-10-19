@@ -14,7 +14,7 @@ const Hero = () => {
         >
             <Box
                 sx={{
-                    padding: "18vh 0",
+                    padding: "22vh 0",
                     display: "flex",
                     flexDirection: "column",
                     alignItems: "center",

@@ -435,7 +435,7 @@ const aboutContent = {
         url: "/images/zuzus4.webp",
         alt: "Zuzu's Hot Five",
     },
-    name: "Good times, great music",
+    name: "Zuzu's Hot 5",
     buttons: [
         {
             text: "Book us!",
@@ -444,7 +444,7 @@ const aboutContent = {
         },
     ],
     content:
-        "SNACK BAR plays all of the best music that cool thirty-somethings love and cherish. Whether you grew up listening to classic rock, punk, or quote-unquote alternative, SNACK BAR is sure to play something that will get your foot tapping and your lips reaching for that limited-edition craft beer. But it isn't just about the music: All of our members have neck-length or longer hair, except for Dave; and Greg, our guitarist/vocalist, has that rustic three-day-old beard you've all come to expect and associate with meaningful jams.\n\nFounded during the pandemic of '21-22, SNACK BAR is comprised of the aforementioned Greg, Emily on the bass, Dave on the muthafuckin' drums, and Emma rocking the keyboard and the tambourine, sometimes simultaneously. The best part? SNACK BAR also accepts requests, though please be aware that at this time we are limited to only songs we already know, most of which appear in the set list already--but we're happy to play them again!",
+        "is Pete Vigour (acoustic guitar), Brandon Rose (trumpet, cornet), Aaron Ollwell (clarinet), Sam Green (upright bass), Paul Rosen (tenor banjo), Gary Elwell (trombone), and Susanna Rosen (voals, uke).\n\nYou'll hear stomps, Dixieland, blues, and ballads from the 1900s to the early 1930s. Think Fats Waller, Louis Armstrong's Hot 5s and 7s, and bessie Smith.",
 };
 
 const leadProfile = {
