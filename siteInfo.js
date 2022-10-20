@@ -234,13 +234,17 @@ const mosaicSectionContentThree = {
         { url: "/images/snackbar2.webp", alt: "alt snackbar2 text" },
     ],
 };
-const musicPreviewContent = {
+const musicContent = {
     backgroundColor: "white",
     title: "1920's Trad Jazz",
     songs: [
         { url: "/songs/muskrat-ramble.mp3", name: "Muskrat Ramble" },
-        { url: "/songs/muskrat-ramble.mp3", name: "Muskrat Ramble" },
-        { url: "/songs/muskrat-ramble.mp3", name: "Muskrat Ramble" },
+        {
+            url: "/songs/i-cant-give-you-anything-but-love.mp3",
+            name: "I Can't Give You Anything But Love",
+        },
+        { url: "/songs/dark-eyes.mp3", name: "Dark Eyes" },
+        { url: "/songs/love.mp3", name: "Love" },
     ],
     content:
         "SNACKBAR plays a selection of excellent music ranging from the 60s through to the 2000s.",
@@ -295,14 +299,6 @@ const showcaseContentOne = {
     buttons: [
         { variant: "contained", href: "/music", text: "listen" },
         { variant: "contained", href: "https://google.com", text: "Preorder" },
-    ],
-};
-
-const musicContent = {
-    songs: [
-        { url: "/songs/muskrat-ramble.mp3", name: "Muskrat Ramble" },
-        { url: "/songs/muskrat-ramble.mp3", name: "Muskrat Ramble" },
-        { url: "/songs/muskrat-ramble.mp3", name: "Muskrat Ramble" },
     ],
 };
 
@@ -747,5 +743,4 @@ export {
     publicationsContent,
     eventsPreviewContent,
     musicContent,
-    musicPreviewContent,
 };

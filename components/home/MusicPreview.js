@@ -5,13 +5,13 @@ import React from "react";
 import Mosaic from "../mosaic/Mosaic";
 import ReactAudioPlayer from "react-audio-player";
 import DecorativeHeader from "../general/DecorativeHeader";
-import { eventsPreviewContent } from "../../siteInfo";
+import { eventsPreviewContent, musicContent } from "../../siteInfo";
 import { ArrowRightAlt } from "@mui/icons-material";
 
-const MusicPreview = ({ musicPreviewContent, reverse, variation }) => {
+const MusicPreview = ({ reverse, variation }) => {
     return (
         <Box>
-            <Container className="section" maxWidth="xl">
+            <Container className="section" maxWidth="lg">
                 <Box sx={{ marginBottom: "4rem" }}>
                     <DecorativeHeader
                         image={eventsPreviewContent.bigDividerImage}
@@ -53,12 +53,13 @@ const MusicPreview = ({ musicPreviewContent, reverse, variation }) => {
                                         },
                                     }}
                                 >
-                                    {musicPreviewContent.title}
+                                    {musicContent.title}
                                 </Typography>
 
                                 <br />
-                                {musicPreviewContent.songs.map(
-                                    (song, index) => {
+                                {musicContent.songs
+                                    .slice(0, 3)
+                                    .map((song, index) => {
                                         return (
                                             <Box
                                                 key={index}
@@ -79,8 +80,7 @@ const MusicPreview = ({ musicPreviewContent, reverse, variation }) => {
                                                 />
                                             </Box>
                                         );
-                                    }
-                                )}
+                                    })}
                                 <br />
                             </Box>
                         </Box>
@@ -94,7 +94,7 @@ const MusicPreview = ({ musicPreviewContent, reverse, variation }) => {
                             }}
                         >
                             <Mosaic
-                                images={musicPreviewContent.images}
+                                images={musicContent.images}
                                 variation={variation}
                             />
                         </Box>
@@ -107,15 +107,15 @@ const MusicPreview = ({ musicPreviewContent, reverse, variation }) => {
                         marginTop: "3rem",
                     }}
                 >
-                    <Link href={musicPreviewContent.button.href}>
+                    <Link href={musicContent.button.href}>
                         <Button
                             size="large"
                             color="secondary"
                             sx={{ width: "fit-content" }}
-                            variant={musicPreviewContent.button.variant}
+                            variant={musicContent.button.variant}
                             endIcon={<ArrowRightAlt />}
                         >
-                            {musicPreviewContent.button.text}
+                            {musicContent.button.text}
                         </Button>
                     </Link>
                 </Box>

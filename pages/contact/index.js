@@ -10,7 +10,7 @@ const index = () => {
             <Container maxWidth="lg" className="section">
                 <Grid container spacing={6}>
                     <Grid item xs={12} md={6}>
-                        <Typography variant="h3">
+                        <Typography variant="h3" sx={{ textAlign: "center" }}>
                             We&apos;ll take you there!
                         </Typography>
                         <br />
