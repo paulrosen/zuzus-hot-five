@@ -36,7 +36,7 @@ const Hero = () => {
                     variant="h3"
                     sx={{ color: theme.palette.primary.main }}
                 >
-                    Hot Five
+                    Hot 5
                 </Typography>
                 <br />
                 <SocialMediaIcons />

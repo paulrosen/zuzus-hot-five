@@ -14,7 +14,7 @@ import lightTheme from "./styles/themes/theme";
 
 // 1. Meta
 
-const siteName = "Zuzu's Hot Five";
+const siteName = "Zuzu's Hot 5";
 // const siteName = "Cosima Hewes";
 
 // 2. Layout

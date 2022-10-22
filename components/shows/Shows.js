@@ -9,61 +9,61 @@ const Shows = () => {
     const [currentEvents, pastEvents] = useGetEvents("events");
     return (
         <PageLayout name="SHOWS">
-            <Container maxWidth="lg">
-                <Grid
-                    container
-                    className="section"
-                    spacing={4}
-                    sx={{ position: "relative" }}
-                >
-                    <Grid item xs={12} md={5}>
-                        <Box
-                            className="sticky"
+            <Grid
+                container
+                className="section"
+                spacing={4}
+                sx={{ position: "relative" }}
+            >
+                <Grid item xs={12} md={5}>
+                    <Box
+                        className="sticky"
+                        sx={{
+                            display: "flex",
+                            justifyContent: { xs: "center", md: "end" },
+                            // paddingTop: "1rem",
+                        }}
+                    >
+                        <Typography
+                            variant="h4"
+                            component="body1"
                             sx={{
-                                display: "flex",
-                                justifyContent: "end",
-                                paddingTop: "1rem",
+                                marginBottom: ".5em",
+                                fontSize: { xs: "2rem", md: "4rem" },
                             }}
                         >
-                            <Typography
-                                variant="h3"
-                                component="body1"
-                                sx={{
-                                    marginBottom: ".5em",
-                                }}
-                            >
-                                Upcoming:
-                            </Typography>
-                        </Box>
-                    </Grid>
-                    <Grid item xs={12} md={7}>
-                        {currentEvents && (
-                            <EventsItems events={currentEvents} />
-                        )}
-                    </Grid>
-                    <Grid item xs={12} md={5}>
-                        <Box
-                            className="sticky"
-                            sx={{
-                                display: "flex",
-                                justifyContent: "end",
-                                paddingTop: "1rem",
-                            }}
-                        >
-                            <Typography
-                                variant="h3"
-                                component="body1"
-                                sx={{ marginBottom: ".5em" }}
-                            >
-                                Past:
-                            </Typography>
-                        </Box>
-                    </Grid>
-                    <Grid item xs={12} md={7}>
-                        {pastEvents && <EventsItems events={pastEvents} />}
-                    </Grid>
+                            Upcoming:
+                        </Typography>
+                    </Box>
                 </Grid>
-            </Container>
+                <Grid item xs={12} md={7}>
+                    {currentEvents && <EventsItems events={currentEvents} />}
+                </Grid>
+                <Grid item xs={12} md={5}>
+                    <Box
+                        className="sticky"
+                        sx={{
+                            display: "flex",
+                            paddingTop: "1rem",
+                            justifyContent: { xs: "center", md: "end" },
+                        }}
+                    >
+                        <Typography
+                            variant="h4"
+                            component="body1"
+                            sx={{
+                                marginBottom: ".5em",
+                                fontSize: { xs: "2rem", md: "4rem" },
+                            }}
+                        >
+                            Past:
+                        </Typography>
+                    </Box>
+                </Grid>
+                <Grid item xs={12} md={7}>
+                    {pastEvents && <EventsItems events={pastEvents} />}
+                </Grid>
+            </Grid>
         </PageLayout>
     );
 };
