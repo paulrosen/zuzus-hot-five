@@ -34,7 +34,7 @@ const EventItem = ({ fields, isPreview }) => {
                     }}
                 >
                     <Box>
-                        <Typography variant="h2">{title}</Typography>
+                        <Typography variant="h3">{title}</Typography>
                         <Typography variant="h4">
                             {`${formatHtmlDate(start)}`}
                             {end && ` - ${formatHtmlDate(end)}`}
