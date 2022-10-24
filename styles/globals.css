@@ -105,15 +105,6 @@ a {
     height: 100%;
 }
 
-.drop-cap p:first-child:first-letter {
-    color: rgb(153, 0, 51);
-    float: left;
-    font-size: 5em;
-    line-height: 0.7em;
-    padding-right: 0.15em;
-    padding-top: 0.03em;
-}
-
 .sticky {
     position: sticky;
     top: 8rem;

@@ -17,7 +17,7 @@ import { useRouter } from "next/router";
 const Navbar = () => {
     const [anchorElNav, setAnchorElNav] = useState(null);
     const [expanded, setExpanded] = useState(false);
-    const [titleFontSize, setTitleFontSize] = useState("2.75rem");
+    const [titleFontSize, setTitleFontSize] = useState("2.25rem");
     const router = useRouter();
     const currentPage = router.pathname.split("/")[1];
     const path = router.pathname.split("/");
@@ -35,8 +35,8 @@ const Navbar = () => {
                 ticking = false;
                 return;
             }
-            setTrigger(scrollY > lastScrollY ? true : false);
-            setTitleFontSize(scrollY < lastScrollY ? "2.75rem" : "1.75rem");
+            setTrigger(scrollY > lastScrollY ? true : true);
+            setTitleFontSize(scrollY < lastScrollY ? "2.25rem" : "2.25rem");
             lastScrollY = scrollY > 0 ? scrollY : 0;
             ticking = false;
         };
@@ -62,7 +62,7 @@ const Navbar = () => {
     };
 
     const handleMouseEnter = () => {
-        setExpanded(true);
+        setExpanded(false);
     };
 
     const handleMouseLeave = () => {
@@ -163,7 +163,7 @@ const Navbar = () => {
                                     }}
                                     sx={{
                                         display: { xs: "flex", xl: "none" },
-                                        fontSize: "1.75rem",
+                                        fontSize: titleFontSize,
                                         textAlign: "center",
                                         transition: "1000ms",
                                         color: theme.palette.custom.light,
@@ -197,14 +197,14 @@ const Navbar = () => {
                                     </Box> */}
                                     <Typography
                                         // className="nav-link"
-                                        variant="h4"
+                                        variant="h3"
                                         onClick={() => {
                                             navigateToTop();
                                         }}
                                         sx={{
                                             margin: "0",
                                             transition: "300ms",
-                                            // fontSize: titleFontSize,
+                                            fontSize: titleFontSize,
                                             textAlign: "center",
                                             color:
                                                 currentPage === ""

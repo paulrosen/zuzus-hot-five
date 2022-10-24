@@ -66,7 +66,7 @@ const Gallery = ({ images }) => {
     }, [images, firstImage, pageLimit]);
 
     return (
-        <Box sx={{ padding: "3rem 0" }}>
+        <Box>
             <Grid container spacing={2}>
                 {columns &&
                     columns.length > 0 &&

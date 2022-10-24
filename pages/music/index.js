@@ -8,25 +8,25 @@ import Image from "next/image";
 
 const index = () => {
     return (
-        <PageLayout name="Music">
+        <PageLayout name="1920's TRAD JAZZ">
             <Container maxWidth="md">
-                <Container maxWidth="sm">
+                {/* <Container maxWidth="sm">
                     <Typography className="section">
                         Louis Armstrong combo meets Mardi Gras street party.
-                        Thrill to the trumpet&apos;s call, the clarinet&apos;s
-                        wail, and the trombone&apos;s growl. Thumpin&apos;
+                        Thrill to the trumpet&rsquo;s call, the clarinet&rsquo;s
+                        wail, and the trombone&rsquo;s growl. Thumpin&rsquo;
                         strings send your body into an unstoppable rhythm. Like
-                        a strong cocktail, Zuzu&apos;s vocals will{" "}
+                        a strong cocktail, Zuzu&rsquo;s vocals will{" "}
                         <em>transport</em> you.
                     </Typography>
-                </Container>
+                </Container> */}
                 {musicContent.songs.map((song, index) => {
                     return (
                         <Box key={index}>
                             <Grid container spacing={6}>
                                 <Grid item xs={12} md={6}>
                                     <Typography
-                                        variant="h3"
+                                        variant="h4"
                                         sx={{
                                             textAlign: {
                                                 xs: "center",

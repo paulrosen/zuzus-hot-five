@@ -40,6 +40,7 @@ const BlockPhoto = ({ blockPhotoContent, reverse }) => {
                         <Box>
                             <Link href={blockPhotoContent.button.href}>
                                 <Button
+                                    component="a"
                                     variant={blockPhotoContent.button.variant}
                                     size="large"
                                     color="secondary"

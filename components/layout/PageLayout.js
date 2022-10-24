@@ -8,13 +8,13 @@ const PageLayout = ({ name, children }) => {
     return (
         <>
             {/* <Header /> */}
-            <Box sx={{ padding: "4rem 0 0 0" }}>
+            <Box sx={{ padding: "8rem 0 0 0" }}>
                 <Meta siteName={name} />
-                <Container maxWidth="xl">
-                    <DecorativeHeader
-                        image={eventsPreviewContent.bigDividerImage}
-                        text={name}
-                    />
+                <DecorativeHeader
+                    image={eventsPreviewContent.bigDividerImage}
+                    text={name}
+                />
+                <Container maxWidth="xl" sx={{ paddingTop: "4rem" }}>
                     {children}
                 </Container>
             </Box>

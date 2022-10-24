@@ -2,7 +2,7 @@ import { Box, Grid, Typography } from "@mui/material";
 import { Container } from "@mui/system";
 import React from "react";
 import useGetEvents from "../../hooks/useGetEvents";
-import EventsItems from "../Events/EventsItems";
+import Event from "../Events/Event";
 import PageLayout from "../layout/PageLayout";
 
 const Shows = () => {
@@ -26,7 +26,6 @@ const Shows = () => {
                     >
                         <Typography
                             variant="h4"
-                            component="body1"
                             sx={{
                                 marginBottom: ".5em",
                                 fontSize: { xs: "2rem", md: "4rem" },
@@ -37,14 +36,21 @@ const Shows = () => {
                     </Box>
                 </Grid>
                 <Grid item xs={12} md={7}>
-                    {currentEvents && <EventsItems events={currentEvents} />}
+                    {currentEvents &&
+                        currentEvents.map((event, index) => {
+                            return (
+                                <Event
+                                    key={index}
+                                    fields={event.data().fields}
+                                />
+                            );
+                        })}
                 </Grid>
                 <Grid item xs={12} md={5}>
                     <Box
                         className="sticky"
                         sx={{
                             display: "flex",
-                            paddingTop: "1rem",
                             justifyContent: { xs: "center", md: "end" },
                         }}
                     >
@@ -61,7 +67,15 @@ const Shows = () => {
                     </Box>
                 </Grid>
                 <Grid item xs={12} md={7}>
-                    {pastEvents && <EventsItems events={pastEvents} />}
+                    {pastEvents &&
+                        pastEvents.map((event, index) => {
+                            return (
+                                <Event
+                                    key={index}
+                                    fields={event.data().fields}
+                                />
+                            );
+                        })}
                 </Grid>
             </Grid>
         </PageLayout>

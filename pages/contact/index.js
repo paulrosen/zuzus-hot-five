@@ -7,22 +7,29 @@ import { contactConfig } from "../../siteInfo";
 const index = () => {
     return (
         <PageLayout name="Contact Form">
-            <Container maxWidth="lg" className="section">
+            <Container maxWidth="lg">
                 <Grid container spacing={6}>
                     <Grid item xs={12} md={6}>
-                        <Typography variant="h3" sx={{ textAlign: "center" }}>
+                        <Typography
+                            variant="h3"
+                            sx={{
+                                textAlign: "center",
+                                fontFamily: "Raleway",
+                                fontWeight: "600",
+                            }}
+                        >
                             We&apos;ll take you there!
                         </Typography>
                         <br />
                         <Typography>
-                            You name it&mdash;we&apos; kick your event into high
-                            gear. Galas, balls, beer and cider tastings, wine
-                            releases, street parties, barbecues, antique car
-                            shows, speakeasies, and festivals. Imagine your own
-                            little brass combo at your oyster roast, birthday,
-                            garden party or Oktoberfest; serenading your loved
-                            ones at Mother&apos;s or Father&apos;s Day, or on
-                            the bandstand on the 4th of July.
+                            You name it&mdash;we&rsquo;ll kick your event into
+                            high gear. Galas, balls, beer and cider tastings,
+                            wine releases, street parties, barbecues, antique
+                            car shows, speakeasies, and festivals. Imagine your
+                            own little brass combo at your oyster roast,
+                            birthday, garden party or Oktoberfest: serenading
+                            your loved ones at Mother&rsquo;s or Father&rsquo;s
+                            Day, or on the bandstand on the 4th of July.
                         </Typography>
                         <br />
                         <Typography>

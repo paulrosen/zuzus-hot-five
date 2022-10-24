@@ -111,6 +111,7 @@ const MusicPreview = ({ reverse, variation }) => {
                         <Button
                             size="large"
                             color="secondary"
+                            component="a"
                             sx={{ width: "fit-content" }}
                             variant={musicContent.button.variant}
                             endIcon={<ArrowRightAlt />}

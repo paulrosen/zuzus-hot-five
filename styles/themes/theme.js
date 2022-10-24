@@ -5,7 +5,8 @@ let theme = createTheme({
         mode: "light",
         primary: {
             // main: "#ffc700",
-            main: "#d8c26c",
+            // main: "#d8c26c", //original gold
+            main: "#f9e07c", //lighter gold
             off: "#FBFFF1",
         },
         secondary: {
@@ -70,14 +71,14 @@ theme = createTheme(theme, {
         h3: {
             color: theme.palette.custom.primary,
             fontFamily: theme.fonts.header,
-            letterSpacing: ".025em",
-            fontSize: "2.5rem",
+            letterSpacing: ".075em",
+            fontSize: "2.75rem",
             // fontWeight: "400",
             // color: darkTheme.palette.custom.dark,
         },
         h4: {
             color: theme.palette.custom.primary,
-            fontFamily: theme.fonts.header,
+            fontFamily: theme.fonts.body,
             letterSpacing: ".025em",
             fontSize: "1.65rem",
             // fontWeight: "600",
