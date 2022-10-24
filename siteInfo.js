@@ -309,7 +309,7 @@ const eventsPreviewContent = {
         alt: "alt snackbar2 text",
     },
     dividerImage: {
-        url: "/images/divider2.svg",
+        url: "/images/separator.svg",
         alt: "alt snackbar2 text",
     },
     title: "Upcoming Events",
