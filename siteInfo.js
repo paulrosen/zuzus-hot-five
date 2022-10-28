@@ -455,22 +455,32 @@ const leadProfile = {
 
 const secondaryProfiles = [
     {
-        image: { url: "/images/snackbar2.webp", alt: "alt snackbar2 text" },
-        name: "Designer One",
-        content:
-            "Lorem ipsum, dolor sit amet consectetur adipisicing elit.\n\nQuibusdam eaque nihil ipsum molestias ab quod aliquid consectetur rerum facilis ratione dignissimos fugiat, enim doloribus assumenda.\n\nLaboriosam voluptatem laudantium sequi iste nihil cupiditate sed, corporis eum natus excepturi, inventore nulla unde! Veritatis nihil culpa neque.",
+        image: { url: "/images/zuzus6.webp", alt: "alt zuzus6 text" },
+        name: "Pete Vigour",
     },
     {
-        image: { url: "/images/snackbar2.webp", alt: "alt snackbar2 text" },
-        name: "Designer Two",
-        content:
-            "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quibusdam eaque nihil ipsum molestias ab quod aliquid consectetur rerum facilis ratione dignissimos fugiat, enim doloribus assumenda.\n\nLaboriosam voluptatem laudantium sequi iste nihil cupiditate sed, corporis eum natus excepturi, inventore nulla unde! Veritatis nihil culpa neque. Dolore ipsa sed asperiores voluptatibus nam modi. Dolorem hic incidunt quae tenetur quaerat animi, unde aspernatur.",
+        image: { url: "/images/zuzus6.webp", alt: "alt zuzus6 text" },
+        name: "Gary Elwell",
     },
     {
-        image: { url: "/images/snackbar2.webp", alt: "alt snackbar2 text" },
-        name: "Designer Three",
-        content:
-            "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quibusdam eaque nihil ipsum molestias ab quod aliquid consectetur rerum facilis ratione dignissimos fugiat, enim doloribus assumenda.\n\nLaboriosam voluptatem laudantium sequi iste nihil cupiditate sed, corporis eum natus excepturi, inventore nulla unde! Veritatis nihil culpa neque. Dolore ipsa sed asperiores voluptatibus nam modi. Dolorem hic incidunt quae tenetur quaerat animi, unde aspernatur.\n\nDolore ipsa sed asperiores voluptatibus nam modi.",
+        image: { url: "/images/zuzus6.webp", alt: "alt zuzus6 text" },
+        name: "Brandon Rose",
+    },
+    {
+        image: { url: "/images/zuzus6.webp", alt: "alt zuzus6 text" },
+        name: "Aaron Olwell",
+    },
+    {
+        image: { url: "/images/zuzus6.webp", alt: "alt zuzus6 text" },
+        name: "Paul Rosen",
+    },
+    {
+        image: { url: "/images/zuzus6.webp", alt: "alt zuzus6 text" },
+        name: "Sam Green",
+    },
+    {
+        image: { url: "/images/zuzus6.webp", alt: "alt zuzus6 text" },
+        name: "Susanna Rosen",
     },
 ];
 
