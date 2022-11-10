@@ -36,7 +36,7 @@ const Navbar = () => {
                 return;
             }
             setTrigger(scrollY > lastScrollY ? true : true);
-            setTitleFontSize(scrollY < lastScrollY ? "2.25rem" : "2.25rem");
+            setTitleFontSize(scrollY < lastScrollY ? "2rem" : "2rem");
             lastScrollY = scrollY > 0 ? scrollY : 0;
             ticking = false;
         };
@@ -77,7 +77,7 @@ const Navbar = () => {
                 position: "fixed",
                 top: "0",
                 zIndex: "100",
-                display: { xs: "inherit", xl: "flex" },
+                display: { xs: "inherit", md: "flex" },
             }}
         >
             <AppBar
@@ -94,7 +94,7 @@ const Navbar = () => {
                             <Box
                                 sx={{
                                     flexGrow: 1,
-                                    display: { xs: "flex", xl: "none" },
+                                    display: { xs: "flex", md: "none" },
                                 }}
                             >
                                 <IconButton
@@ -122,7 +122,7 @@ const Navbar = () => {
                                     open={Boolean(anchorElNav)}
                                     onClose={handleCloseNavMenu}
                                     sx={{
-                                        display: { xs: "block", xl: "none" },
+                                        display: { xs: "block", md: "none" },
                                     }}
                                 >
                                     {pages.map((page, index) => {
@@ -157,13 +157,11 @@ const Navbar = () => {
                             >
                                 <Typography
                                     variant="h3"
+                                    component="p"
                                     noWrap
-                                    onClick={() => {
-                                        navigateToTop();
-                                    }}
                                     sx={{
-                                        display: { xs: "flex", xl: "none" },
-                                        fontSize: titleFontSize,
+                                        display: { xs: "flex", md: "none" },
+                                        fontSize: "1.75rem",
                                         textAlign: "center",
                                         transition: "1000ms",
                                         color: theme.palette.custom.light,
@@ -178,7 +176,7 @@ const Navbar = () => {
                     </Grid>
 
                     {/* desktop view */}
-                    <Box sx={{ display: { xs: "none", xl: "inherit" } }}>
+                    <Box sx={{ display: { xs: "none", md: "inherit" } }}>
                         <Grid container>
                             <Grid item xs={4}>
                                 <Box
@@ -196,11 +194,8 @@ const Navbar = () => {
                                         />
                                     </Box> */}
                                     <Typography
-                                        // className="nav-link"
                                         variant="h3"
-                                        onClick={() => {
-                                            navigateToTop();
-                                        }}
+                                        component="p"
                                         sx={{
                                             margin: "0",
                                             transition: "300ms",

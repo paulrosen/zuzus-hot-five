@@ -39,11 +39,11 @@ const Meta = () => {
                     name="twitter:creator"
                     content="Susanna Rosen"
                 />
-                <meta
+                {/* <meta
                     data-n-head="ssr"
                     name="twitter:image"
                     content="https://zuzushotfive.com/_nuxt/img/zuzu-artsy-header.806b53e.png"
-                />
+                /> */}
                 {/* <meta data-n-head="ssr" name="og:title" content="Zuzu's Hot Five"> */}
                 <meta data-n-head="ssr" name="og:type" content="website" />
                 <meta
@@ -51,11 +51,11 @@ const Meta = () => {
                     name="og:url"
                     content="https://zuzushotfive.com"
                 />
-                <meta
+                {/* <meta
                     data-n-head="ssr"
                     name="og:image"
                     content="https://zuzushotfive.com/_nuxt/img/zuzu-artsy-header.806b53e.png"
-                />
+                /> */}
                 <meta
                     data-n-head="ssr"
                     name="og:description"

@@ -195,10 +195,9 @@ const FirebaseUploadForm = ({
             </Typography>
             <Box>
                 <Button
-                    variant="outlined"
+                    variant="contained"
                     onClick={() => {
                         fileInputRef.current.children[0].click();
-                        // fileInputRef.current.click();
                     }}
                 >
                     select file
@@ -240,7 +239,7 @@ const FirebaseUploadForm = ({
                                         layout="responsive"
                                     />
                                     <Button
-                                        variant="outlined"
+                                        variant="contained"
                                         onClick={() => {
                                             handleRemovePreview(preview);
                                             handleRemoveSelectedImage(index);

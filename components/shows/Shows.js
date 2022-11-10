@@ -56,7 +56,6 @@ const Shows = () => {
                     >
                         <Typography
                             variant="h4"
-                            component="body1"
                             sx={{
                                 marginBottom: ".5em",
                                 fontSize: { xs: "2rem", md: "4rem" },

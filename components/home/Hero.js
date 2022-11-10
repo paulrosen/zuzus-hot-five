@@ -38,8 +38,6 @@ const Hero = () => {
                 >
                     Hot 5
                 </Typography>
-                <br />
-                <SocialMediaIcons />
             </Box>
         </Box>
     );

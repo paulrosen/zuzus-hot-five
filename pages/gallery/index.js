@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import PageLayout from "../../components/layout/PageLayout";
-import { collection, getDocs, orderBy, query } from "firebase/firestore";
 import Gallery from "../../components/gallery/Gallery";
-import { db } from "../../firebase";
 import useGetImages from "../../hooks/useGetImages";
 
 const Projects = () => {

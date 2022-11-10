@@ -36,6 +36,7 @@ const EventItem = ({ fields, isPreview }) => {
                 <Box>
                     <Typography
                         variant="h3"
+                        component="p"
                         sx={{ fontWeight: "500", fontFamily: "Raleway" }}
                     >
                         {title}

@@ -15,11 +15,7 @@ const DecorativeHeader = ({ image, text }) => {
             >
                 <NativeImage image={image} maxSize={300} />
             </Box>
-            <Typography
-                variant="h2"
-                component="h3"
-                sx={{ textAlign: "center" }}
-            >
+            <Typography variant="h2" sx={{ textAlign: "center" }}>
                 {text}
             </Typography>
             <Box
