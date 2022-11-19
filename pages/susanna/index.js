@@ -88,6 +88,7 @@ const Admin = () => {
                                     onChange={handleEmailChange}
                                 />
                                 <TextField
+                                    type="password"
                                     label="password"
                                     focused
                                     color="secondary"

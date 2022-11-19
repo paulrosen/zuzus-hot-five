@@ -16,6 +16,7 @@ const EventItem = ({ fields, isPreview }) => {
     const time = fields[4].value;
     const description = fields[5].value;
     const website = fields[6].value;
+    const facebook = fields[7].value;
 
     return (
         <Box
@@ -58,14 +59,25 @@ const EventItem = ({ fields, isPreview }) => {
                 >
                     {venue}
                 </Typography>
-                <Box
-                    sx={{
-                        display: "flex",
-                        gap: "1em",
-                        textDecoration: "underline",
-                    }}
-                >
-                    <Link href={website}>Venue Website</Link>
+                <Box sx={{ display: "flex", gap: "1rem" }}>
+                    <Box
+                        sx={{
+                            display: "flex",
+                            gap: "1em",
+                            textDecoration: "underline",
+                        }}
+                    >
+                        <Link href={website}>Venue Website</Link>
+                    </Box>
+                    <Box
+                        sx={{
+                            display: "flex",
+                            gap: "1em",
+                            textDecoration: "underline",
+                        }}
+                    >
+                        <Link href={facebook}>Facebook Page</Link>
+                    </Box>
                 </Box>
             </Box>
             <Box sx={{ opacity: "70%", margin: "1rem 0" }}>
