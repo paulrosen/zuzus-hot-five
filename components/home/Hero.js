@@ -1,7 +1,6 @@
 import { Box, Typography } from "@mui/material";
 import { heroContent } from "../../siteInfo";
 import theme from "../../styles/themes/theme";
-import SocialMediaIcons from "../general/SocialMediaIcons";
 
 const Hero = () => {
     return (

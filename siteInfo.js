@@ -48,8 +48,7 @@ const musicContent = {
         { url: "/songs/dark-eyes.mp3", name: "Dark Eyes" },
         { url: "/songs/love.mp3", name: "Love" },
     ],
-    content:
-        "SNACKBAR plays a selection of excellent music ranging from the 60s through to the 2000s.",
+
     button: {
         text: "More Songs",
         href: "/music",
@@ -81,14 +80,14 @@ const blockPhotoContentOne = {
 };
 
 const eventsPreviewContent = {
-    image: { url: "/images/zuzus10.webp", alt: "alt snackbar2 text" },
+    image: { url: "/images/zuzus10.webp", alt: "events preview image" },
     bigDividerImage: {
         url: "/images/eventsBorder.svg",
-        alt: "alt snackbar2 text",
+        alt: "events border",
     },
     dividerImage: {
         url: "/images/separator.svg",
-        alt: "alt snackbar2 text",
+        alt: "separator",
     },
     title: "Upcoming Events",
     buttons: [{ variant: "contained", href: "/shows", text: "All Shows" }],
