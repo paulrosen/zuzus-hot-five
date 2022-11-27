@@ -118,7 +118,7 @@ a {
 footer {
     padding: 1rem 24px;
     display: flex;
-    justify-content: end;
+    justify-content: flex-end;
 }
 
 footer[data-page="contact"] a[data-contact] {
@@ -170,4 +170,8 @@ nav.desktop a:hover {
 .top-nav-contact {
     border: 1px solid rgba(249, 224, 124, 0.5);
     color: #f9e07c;
+}
+
+.decorator {
+    max-width: 300px;
 }

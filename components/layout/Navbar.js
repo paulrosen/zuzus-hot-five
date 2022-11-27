@@ -219,7 +219,7 @@ const Navbar = () => {
                                 </Box>
                             </Grid>
                             <Grid item xs={8}>
-                                <nav class="desktop">
+                                <nav className="desktop">
                                 <Box
                                     sx={{
                                         display: "flex",
@@ -237,7 +237,6 @@ const Navbar = () => {
                                                 .join("")
                                         ) ? 'selected' : ''}>
                                         <Link href={page.href}
-                                                onMouseEnter={handleMouseEnter}
                                                 sx={{
                                                     color: path.includes(
                                                         page.name

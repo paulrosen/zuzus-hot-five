@@ -13,7 +13,7 @@ const DecorativeHeader = ({ image, text }) => {
                     transform: "scaleY(-1)",
                 }}
             >
-                <NativeImage image={image} maxSize={300} />
+                <img src={image.url} alt="" className="decorator"/>
             </Box>
             <Typography variant="h2" sx={{ textAlign: "center" }}>
                 {text}
@@ -26,7 +26,7 @@ const DecorativeHeader = ({ image, text }) => {
                     // transform: "scaleY(-1)",
                 }}
             >
-                <NativeImage image={image} maxSize={300} />
+                <img src={image.url} alt="" className="decorator"/>
             </Box>
         </Box>
     );
