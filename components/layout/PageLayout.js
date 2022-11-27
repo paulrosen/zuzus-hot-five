@@ -9,7 +9,7 @@ const PageLayout = ({ name, children }) => {
         <>
             {/* <Header /> */}
             <Box sx={{ padding: "8rem 0 0 0" }}>
-                {/* <Meta siteName={name} /> */}
+                <Meta />
                 <DecorativeHeader
                     image={eventsPreviewContent.bigDividerImage}
                     text={name}

@@ -12,6 +12,7 @@ import MusicPreview from "../components/home/MusicPreview";
 export default function Home() {
     return (
         <Box>
+            <Meta />
             <Hero />
             <Container maxWidth="xl" disableGutters>
                 <MusicPreview
