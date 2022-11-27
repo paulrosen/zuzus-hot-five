@@ -1,0 +1,10 @@
+version: '3.7'
+
+services:
+  app:
+    image: zuzu-react
+    build: .
+    container_name: zuzu-react
+    volumes:
+      - .:/srv/app
+      - ./node_modules:/srv/app/node_modules
