@@ -31,8 +31,7 @@ const BlockPhoto = ({ blockPhotoContent, reverse }) => {
                             {blockPhotoContent.title}
                         </Typography>
                         <Typography
-                            variant="h2"
-                            component="h6"
+                            className="block-photo-emphasis"
                             sx={{ marginBottom: ".25em", textAlign: "center" }}
                         >
                             {blockPhotoContent.content}

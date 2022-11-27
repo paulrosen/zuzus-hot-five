@@ -157,6 +157,7 @@ const Navbar = () => {
                                     width: "100%",
                                 }}
                             >
+                                <h1 className="nav-bar">
                                 <Typography
                                     variant="h3"
                                     component="p"
@@ -173,6 +174,7 @@ const Navbar = () => {
                                         {siteName}
                                     </Link>
                                 </Typography>
+                                </h1>
                             </Box>
                         </Grid>
                     </Grid>
@@ -195,6 +197,7 @@ const Navbar = () => {
                                             maxSize={85}
                                         />
                                     </Box> */}
+                                    <h1 className="nav-bar">
                                     <Typography
                                         variant="h3"
                                         component="p"
@@ -216,6 +219,7 @@ const Navbar = () => {
                                     >
                                         <Link href="/">{siteName}</Link>
                                     </Typography>
+                                    </h1>
                                 </Box>
                             </Grid>
                             <Grid item xs={8}>

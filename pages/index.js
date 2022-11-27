@@ -11,18 +11,26 @@ import MusicPreview from "../components/home/MusicPreview";
 
 export default function Home() {
     return (
+        <main>
         <Box>
             <Meta />
             <Hero />
             <Container maxWidth="xl" disableGutters>
+                <section>
                 <MusicPreview
                     musicPreviewContent={musicPreviewContent}
                     variation={1}
                 />
+                </section>
+                <section>
                 <EventsPreview />
+                </section>
+                <section>
                 <AboutPreview />
+                </section>
                 <BlockPhoto blockPhotoContent={blockPhotoContentOne} />
             </Container>
         </Box>
+        </main>
     );
 }

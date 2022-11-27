@@ -175,3 +175,49 @@ nav.desktop a:hover {
 .decorator {
     max-width: 300px;
 }
+
+.hero-title {
+    margin: 0;
+    font-family: Park Lane;
+    font-weight: 300;
+    color: #f9e07c;
+}
+.hero-title .init {
+    line-height: .85em;
+    letter-spacing: .025em;
+    font-size: clamp(4.5rem, 20vw, 30rem);
+}
+.hero-title .word {
+    line-height: .85em;
+    letter-spacing: .025em;
+   font-size: clamp(4.5rem, 15vw, 24rem);
+    vertical-align: top;
+}
+.hero-title .sec {
+    margin: 0;
+    font-family: Park Lane;
+    font-weight: 400;
+    font-size: 2.75rem;
+    line-height: 1.167;
+    letter-spacing: .075em;
+    color: #f9e07c;
+
+    display:block;
+    text-align: center;
+}
+
+.block-photo-emphasis {
+    margin: 0px 0px 0.25em;
+    font-family: "Park Lane";
+    font-weight: 300;
+    font-size: clamp(3rem, 6vw, 10rem);
+    line-height: 1em;
+    letter-spacing: 0.025em;
+    text-align: center;
+}
+
+h1.nav-bar {
+    font-weight: 400;
+    margin: 0px;
+    font-size: 2rem;
+}
