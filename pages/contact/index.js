@@ -27,7 +27,7 @@ const index = () => {
                             wine releases, street parties, barbecues, antique
                             car shows, speakeasies, and festivals. Imagine your
                             own little brass combo at your oyster roast,
-                            birthday, garden party or Oktoberfest: serenading
+                            birthday, garden party or Oktoberfest, serenading
                             your loved ones at Mother&rsquo;s or Father&rsquo;s
                             Day, or on the bandstand on the 4th of July.
                         </Typography>
