@@ -1,5 +1,27 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
+## To run under Docker
+
+First download and start Docker Desktop.
+
+In your profile, create the variable `$zuzu_react` pointing to any open port. For instance, if your profile is `~/.zshrc`, put the following in it:
+```
+export zuzu_react=3000
+```
+
+If you have multiple projects and you pick different ports for each, then they can all run at the same time.
+
+The first time you run and any time you change one of the docker files, run:
+```
+./docker-build.sh
+```
+
+Every time you want to run, do this:
+```
+./docker-start.sh
+```
+That will give you a command line in the virtual machine that you can run `npm` from.
+
 ## Getting Started
 
 First, run the development server:
