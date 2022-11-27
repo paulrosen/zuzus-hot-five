@@ -221,3 +221,21 @@ h1.nav-bar {
     margin: 0px;
     font-size: 2rem;
 }
+
+.pagination-explanation {
+    margin: 0px;
+    font-family: Raleway;
+    font-weight: 400;
+    font-size: 1.25rem;
+    line-height: 1.75;
+    letter-spacing: 0.00938em;
+}
+
+.music-list {
+    margin: 0px 0px 0.25em;
+    font-family: Raleway;
+    font-weight: 400;
+    font-size: 1.65rem;
+    line-height: 1.235;
+    letter-spacing: 0.025em;
+}

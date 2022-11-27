@@ -22,11 +22,11 @@ const index = () => {
                 </Container> */}
                 {musicContent.songs.map((song, index) => {
                     return (
-                        <Box key={index}>
+                        <Box className="music-list" key={index}>
                             <Grid container spacing={6}>
                                 <Grid item xs={12} md={6}>
                                     <Typography
-                                        variant="h4"
+                                        variant=""
                                         sx={{
                                             textAlign: {
                                                 xs: "center",

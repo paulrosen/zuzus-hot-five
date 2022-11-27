@@ -34,11 +34,11 @@ const Gallery = ({ images }) => {
                         Previous Page
                     </Button>
                 )}
-                <Typography variant="subtitle1" sx={{}}>
+                <span className="pagination-explanation">
                     {firstImage + 1} -{" "}
                     {Math.min(firstImage + pageLimit, images.length)} of{" "}
                     {images.length}
-                </Typography>
+                </span>
                 {firstImage + pageLimit < images.length && (
                     <Button
                         color="secondary"

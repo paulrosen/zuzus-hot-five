@@ -25,7 +25,7 @@ const Shows = () => {
                         }}
                     >
                         <Typography
-                            variant="h4"
+                            variant="h3"
                             sx={{
                                 marginBottom: ".5em",
                                 fontSize: { xs: "2rem", md: "4rem" },
@@ -55,7 +55,7 @@ const Shows = () => {
                         }}
                     >
                         <Typography
-                            variant="h4"
+                            variant="h3"
                             sx={{
                                 marginBottom: ".5em",
                                 fontSize: { xs: "2rem", md: "4rem" },
