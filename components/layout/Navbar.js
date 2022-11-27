@@ -97,6 +97,7 @@ const Navbar = () => {
                                     display: { xs: "flex", md: "none" },
                                 }}
                             >
+                                <nav>
                                 <IconButton
                                     size="large"
                                     aria-label="account of current user"
@@ -143,6 +144,7 @@ const Navbar = () => {
                                         );
                                     })}
                                 </Menu>
+                                </nav>
                             </Box>
                         </Grid>
                         <Grid item xs={9}>
@@ -217,6 +219,7 @@ const Navbar = () => {
                                 </Box>
                             </Grid>
                             <Grid item xs={8}>
+                                <nav class="desktop">
                                 <Box
                                     sx={{
                                         display: "flex",
@@ -228,8 +231,12 @@ const Navbar = () => {
                                     }}
                                 >
                                     {pages.map((page, index) => (
-                                        <Link key={index} href={page.href}>
-                                            <Button
+                                        <span key={index} className={path.includes(
+                                            page.name
+                                                .split(" ")
+                                                .join("")
+                                        ) ? 'selected' : ''}>
+                                        <Link href={page.href}
                                                 onMouseEnter={handleMouseEnter}
                                                 sx={{
                                                     color: path.includes(
@@ -248,18 +255,16 @@ const Navbar = () => {
                                                 }}
                                             >
                                                 {page.name}
-                                            </Button>
                                         </Link>
+                                        </span>
                                     ))}
-                                    {/* <SocialMediaIcons /> */}
+                                    <span className={"top-nav-contact " + (path.includes("contact") ? 'selected' : '')}>
                                     <Link href={navbar.buttonOne.href}>
-                                        <Button
-                                            variant={navbar.buttonOne.variant}
-                                        >
-                                            {navbar.buttonOne.text}
-                                        </Button>
+                                        {navbar.buttonOne.text}
                                     </Link>
+                                    </span>
                                 </Box>
+                                </nav>
                             </Grid>
                         </Grid>
                         {/* {expanded && (

@@ -137,3 +137,37 @@ footer a {
     letter-spacing: 0.02857em;
     text-transform: uppercase;
 }
+
+nav.desktop a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+    background-color: transparent;
+    font-family: "Roboto","Helvetica","Arial",sans-serif;
+    font-weight: 500;
+    font-size: 0.875rem;
+    line-height: 1.75;
+    letter-spacing: 0.02857em;
+    text-transform: uppercase;
+    padding: 6px 8px;
+    color: #F6F8FF;
+}
+
+nav.desktop .selected a {
+    color: #f9e07c;
+    background-color: rgba(249, 224, 124, 0.04);
+    text-decoration: underline;
+}
+
+nav.desktop a:hover {
+    color: #f9e07c;
+    background-color: rgba(249, 224, 124, 0.04);
+}
+
+.top-nav-contact {
+    border: 1px solid rgba(249, 224, 124, 0.5);
+    color: #f9e07c;
+}
