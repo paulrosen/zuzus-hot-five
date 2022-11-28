@@ -8,7 +8,7 @@ const variation1 = (images) => {
         <Grid container spacing={2}>
             <Grid item xs={12} lg={4}>
                 <Box
-                    className="flex-1"
+                    className="flex-1 music-preview-mosaic"
                     sx={{
                         flexDirection: "column",
                         alignItems: "end",

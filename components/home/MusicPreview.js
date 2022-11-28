@@ -70,7 +70,7 @@ const MusicPreview = ({ reverse, variation }) => {
                                                     alignItems: "end",
                                                 }}
                                             >
-                                                <Typography variant="caption">
+                                                <Typography variant="text">
                                                     {song.name}
                                                 </Typography>
                                                 <ReactAudioPlayer

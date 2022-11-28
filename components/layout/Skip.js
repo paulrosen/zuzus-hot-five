@@ -2,7 +2,7 @@ import React from "react";
 
 const Skip = () => {
     return (
-		<a id="skippy" class="skiplink-text" href="#main">
+		<a id="skippy" className="skiplink-text" href="#main">
             Skip to main content
         </a>
     );

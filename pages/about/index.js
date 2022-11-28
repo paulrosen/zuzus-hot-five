@@ -46,10 +46,8 @@ const index = () => {
                     >
                         {aboutContent.buttons.map((button, index) => {
                             return (
-                                <Link key={index} href={button.href}>
-                                    <Button size="large" variant="contained">
-                                        {button.text}
-                                    </Button>
+                                <Link className="about-book" key={index} href={button.href}>
+                                    {button.text}
                                 </Link>
                             );
                         })}
