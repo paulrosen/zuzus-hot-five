@@ -1,0 +1,40 @@
+{
+	"favorites.resources": [
+		{
+			"filePath": "components/admin",
+			"group": "Default"
+		},
+		{
+			"filePath": "utility/login.js",
+			"group": "Default"
+		},
+		{
+			"filePath": "utility/loginEmail.js",
+			"group": "Default"
+		},
+		{
+			"filePath": "utility/signUpEmail.js",
+			"group": "Default"
+		},
+		{
+			"filePath": "pages/susanna/index.js",
+			"group": "Default"
+		},
+		{
+			"filePath": "hooks/useGetEvents.js",
+			"group": "Default"
+		},
+		{
+			"filePath": "hooks/useGetImages.js",
+			"group": "Default"
+		},
+		{
+			"filePath": "hooks/useLogin.js",
+			"group": "Default"
+		},
+		{
+			"filePath": "firebase.js",
+			"group": "Default"
+		}
+	]
+}
