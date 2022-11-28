@@ -52,6 +52,8 @@ const AboutPreview = () => {
                                 <Link href={"/about"}>
                                     <Button
                                         size="large"
+                                        component="a"
+                                        href="/about"
                                         variant="contained"
                                         endIcon={<ArrowRightAlt />}
                                     >

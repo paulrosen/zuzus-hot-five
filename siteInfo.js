@@ -55,12 +55,12 @@ const musicContent = {
         variant: "contained",
     },
     images: [
-        { url: "/images/zuzus2.webp", alt: "alt zuzus2 text" },
-        { url: "/images/zuzus4.webp", alt: "alt zuzus2 text" },
-        { url: "/images/zuzus6.webp", alt: "alt zuzus2 text" },
-        { url: "/images/zuzus3.webp", alt: "alt zuzus2 text" },
-        { url: "/images/zuzus7.webp", alt: "alt zuzus2 text" },
-        { url: "/images/zuzus8.webp", alt: "alt zuzus2 text" },
+        { url: "/images/zuzus2.webp", alt: "swing dancers about to do a dip" },
+        { url: "/images/zuzus4.webp", alt: "zuzu's hot 5 doing a shout chorus" },
+        { url: "/images/zuzus6.webp", alt: "Zuzu's hot 5 band members posing with an old car" },
+        { url: "/images/zuzus3.webp", alt: "swing dancers doing a Charleston, probably" },
+        { url: "/images/zuzus7.webp", alt: "Zuzu on stage smiling and singing with arm raised" },
+        { url: "/images/zuzus8.webp", alt: "a dance floor full of social dancers with Zuzu's Hot 5 on stage in the background" },
     ],
 };
 
@@ -75,12 +75,12 @@ const blockPhotoContentOne = {
     },
     image: {
         url: "/images/zuzus1.webp",
-        alt: "people dancing",
+        alt: "Zuzu's Hot 5 on stage with two dancers doing a demo on an otherwise empty dance floor",
     },
 };
 
 const eventsPreviewContent = {
-    image: { url: "/images/zuzus10.webp", alt: "events preview image" },
+    image: { url: "/images/zuzus10.webp", alt: "Zuzu's Hot 5 on stage with two dancers doing a demo on an otherwise empty dance floor" },
     bigDividerImage: {
         url: "/images/eventsBorder.svg",
         alt: "events border",
@@ -124,7 +124,7 @@ const contactConfig = {
 const aboutContent = {
     image: {
         url: "/images/zuzus4.webp",
-        alt: "Zuzu's Hot Five",
+        alt: "Zuzu's Hot Five on stage doing a shout chorus",
     },
     name: "Zuzu's Hot 5",
     buttons: [
@@ -135,7 +135,7 @@ const aboutContent = {
         },
     ],
     content:
-        "is Pete Vigour (acoustic guitar), Brandon Rose (trumpet, cornet), Aaron Ollwell (clarinet), Sam Green (upright bass), Paul Rosen (tenor banjo), Gary Elwell (trombone), and Susanna Rosen (voals, uke).\n\nYou'll hear stomps, Dixieland, blues, and ballads from the 1900s to the early 1930s. Think Fats Waller, Louis Armstrong's Hot 5s and 7s, and bessie Smith.",
+        "is Pete Vigour (acoustic guitar), Brandon Rose (trumpet, cornet), Aaron Olwell (clarinet), Sam Green (upright bass), Paul Rosen (tenor banjo), Gary Elwell (trombone), and Susanna Rosen (vocals, uke).\n\nYou'll hear stomps, Dixieland, blues, and ballads from the 1900s to the early 1930s. Think Fats Waller, Louis Armstrong's Hot 5s and 7s, and bessie Smith.",
 };
 
 const secondaryProfiles = [
