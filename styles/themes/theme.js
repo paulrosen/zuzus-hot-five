@@ -11,7 +11,7 @@ let theme = createTheme({
         },
         secondary: {
             // main: "#fe1d1d",
-            main: "#00857f",
+            main: "#00807a",
         },
         background: {
             default: "#FBFBF2",
