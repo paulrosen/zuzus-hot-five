@@ -11,7 +11,7 @@ import MusicPreview from "../components/home/MusicPreview";
 
 export default function Home() {
     return (
-        <main>
+        <main id="main">
         <Box>
             <Meta />
             <Hero />

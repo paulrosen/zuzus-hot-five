@@ -8,6 +8,7 @@ const PageLayout = ({ name, children }) => {
     return (
         <>
             {/* <Header /> */}
+            <main id="main">
             <Box sx={{ padding: "8rem 0 0 0" }}>
                 <Meta />
                 <DecorativeHeader
@@ -18,6 +19,7 @@ const PageLayout = ({ name, children }) => {
                     {children}
                 </Container>
             </Box>
+            </main>
         </>
     );
 };

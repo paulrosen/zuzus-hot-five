@@ -239,3 +239,29 @@ h1.nav-bar {
     line-height: 1.235;
     letter-spacing: 0.025em;
 }
+
+.skiplink-text {
+    position: absolute;
+    top: -1000px;
+    left: -1000px;
+    height: 1px;
+    width: 1px;
+    text-align: left;
+    overflow: hidden;
+    padding: 5px 20px;
+    color: #000;
+    background-color: #ffffff;
+    z-index: 100000;
+    font-weight: bold;
+    text-decoration: underline;
+    transition: all 300ms;
+}
+
+a.skiplink-text:active, a.skiplink-text:focus, a.skiplink-text:hover {
+    left: 50%;
+    transform: translateX(-50%);
+    top: 0;
+    width: auto;
+    height: auto;
+    overflow: visible;
+}
