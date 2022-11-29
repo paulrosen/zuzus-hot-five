@@ -77,9 +77,7 @@ On `https://console.firebase.google.com/project/zuzus-hot-five/authentication/se
 
 After setting up the dev environment, go to `http://localhost:3000/susanna` and put in an email and password and click "sign up".
 
-Then in firebase go to `https://console.firebase.google.com/project/zuzus-hot-five/authentication/users` and click "users"
-
-TODO: How do I add "admin" privileges?
+Then in firebase go to the zuzus-hot-five firestore database and click "users". Change the "admin" field to true.
 
 ## Getting Started
 
