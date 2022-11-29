@@ -38,7 +38,7 @@ const index = () => {
                         </Typography>
                     </Grid>
                     <Grid item xs={12} md={6}>
-                        <ContactForm config={contactConfig} />
+                        <div class="thanks-message">Thanks for contacting us! We&rsquo;ll be in touch soon. In the meantime, happy dancing!</div>
                     </Grid>
                 </Grid>
             </Container>

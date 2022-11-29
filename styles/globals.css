@@ -305,3 +305,9 @@ a.skiplink-text:active, a.skiplink-text:focus, a.skiplink-text:hover {
     }
 
 }
+
+.thanks-message {
+    border: 1px solid #C1C1BA;
+    height: 400px;
+    padding: 20px;
+}
