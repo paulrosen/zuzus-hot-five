@@ -69,15 +69,9 @@ const Admin = () => {
                 <Box>
                     {!isLoggedIn && (
                         <Container maxWidth="sm">
-                            <Box
-                                sx={{
-                                    display: "flex",
-                                    flexDirection: "column",
-                                    gap: "1em",
-                                }}
-                            >
-                                <form>
+                            <form className="login-form">
                                 <TextField
+                                    InputLabelProps={{ shrink: true }}
                                     label="email"
                                     focused
                                     color="secondary"
@@ -85,6 +79,7 @@ const Admin = () => {
                                     onChange={handleEmailChange}
                                 />
                                 <TextField
+                                    InputLabelProps={{ shrink: true }}
                                     type="password"
                                     label="password"
                                     focused
@@ -112,11 +107,10 @@ const Admin = () => {
                                         onClick={handleLoginEmail}
                                         sx={{ marginBottom: "1rem" }}
                                     >
-                                        Log in with email
+                                        Log in
                                     </Button>
                                 </Box>
-                                </form>
-                            </Box>
+                            </form>
                         </Container>
                     )}
                     {isAdmin ? (
@@ -127,6 +121,7 @@ const Admin = () => {
                                         <input type="radio" 
                                             name="adminTab"  
                                             onClick={handleTabChange}
+                                            defaultChecked
                                             value="event"/>Events
                                     </label>
                                     <label className="admin-tab">

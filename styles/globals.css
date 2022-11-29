@@ -317,3 +317,13 @@ a.skiplink-text:active, a.skiplink-text:focus, a.skiplink-text:hover {
     border-bottom: 2px solid #ADD8E6;
     margin-right: 10px;;
 }
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+
+.admin-error {
+    color: red;
+}

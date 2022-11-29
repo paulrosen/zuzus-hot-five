@@ -90,6 +90,7 @@ const FirestoreListingItem = ({
                         formData.fields.map((field, index) => {
                             return (
                                 <TextField
+                                    InputLabelProps={{ shrink: true }}
                                     fullWidth
                                     type={field.type}
                                     color="secondary"

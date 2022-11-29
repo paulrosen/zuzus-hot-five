@@ -24,6 +24,7 @@ const ContactFormField = ({ field, formData, setFormData, index }) => {
         case "email":
             return (
                 <TextField
+                    InputLabelProps={{ shrink: true }}
                     fullWidth
                     type={field.type}
                     color="secondary"

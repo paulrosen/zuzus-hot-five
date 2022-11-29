@@ -16,6 +16,7 @@ const FirebaseUploadForm = ({
         JSON.parse(JSON.stringify(config))
     );
     const [isUploading, setIsUploading] = useState(false);
+    const [fileError, setFileError] = useState([]);
 
     const handleFieldChange = (e, field, index) => {
         const newFieldData = {
@@ -29,17 +30,27 @@ const FirebaseUploadForm = ({
     };
 
     const handleUpload = async () => {
-        if (formData.fields[0].value === "") {
-            setFileError("Please Enter a Title");
+        const errors = [];
+        let date = "";
+        formData.fields.forEach(field => {
+            if (field.value === "https://")
+                field.value = ""
+            if (field.required && !field.value)
+                errors.push("Please Enter a " + field.name);
+            if (field.name === "Date")
+                date = field.value
+        })
+        setFileError(errors)
+        if (errors.length > 0) {
+            setIsUploading(false);
             return;
         }
+
         addDoc(collection(db, folder), {
             ...formData,
             dateUploaded: Date.now(),
-            startDate: formData.fields[1].value,
+            startDate: date,
         });
-
-        //check to see if document with selected Title already exists
 
         setFormData(JSON.parse(JSON.stringify(config)));
 
@@ -83,6 +94,10 @@ const FirebaseUploadForm = ({
                 );
             })}
 
+            <ul className="admin-error">
+                {fileError.map((error) => {
+                    return (<li key={error}>{error}</li>)})
+                }</ul>
             <ButtonWithConfirm
                 handleClick={handleUpload}
                 isDisabled={isUploading}
