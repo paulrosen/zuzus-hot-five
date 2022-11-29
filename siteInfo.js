@@ -112,7 +112,8 @@ const contactConfig = {
     category: "contact",
     fields: [
         { name: "Name", type: "text", value: "" },
-        { name: "Email", type: "text", value: "" },
+        { name: "Email", type: "email", value: "" },
+        { name: "Subject", type: "text", value: "" },
         { name: "Comment", type: "text", value: "", multiline: true, rows: 4 },
     ],
 };

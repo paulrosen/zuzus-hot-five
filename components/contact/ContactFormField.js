@@ -21,11 +21,14 @@ const ContactFormField = ({ field, formData, setFormData, index }) => {
 
     switch (field.type) {
         case "text":
+        case "email":
             return (
                 <TextField
                     fullWidth
                     type={field.type}
                     color="secondary"
+                    name={field.name.toLowerCase()}
+                    required
                     label={field.name}
                     multiline={field.multiline}
                     rows={field.rows}

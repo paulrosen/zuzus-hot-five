@@ -32,8 +32,9 @@ const ContactForm = ({ config }) => {
     // };
 
     return (
-        <form name="contact" method="POST" data-netlify="true">
+        <form name="contact" method="POST" netlify-honeypot="bot-field" data-netlify="true" action="/thanks">
         <input type="hidden" name="form-name" value="contact"/>
+        <input type="hidden" name="bot-field" />
         <Box
             sx={{
                 display: "flex",
@@ -58,6 +59,7 @@ const ContactForm = ({ config }) => {
                     <Button
                         color="secondary"
                         variant="contained"
+                        type="submit"
                         // onClick={handleSendEmail}
                     >
                         Submit
