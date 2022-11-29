@@ -11,25 +11,25 @@ const ContactForm = ({ config }) => {
     );
     const [isSubmitted, setIsSubmitted] = useState(false);
 
-    const handleSendEmail = () => {
-        const templateParams = {
-            website: formData.website,
-            name: formData.fields[0].value,
-            email: formData.fields[1].value,
-            comment: formData.fields[2].value,
-        };
+    // const handleSendEmail = () => {
+    //     const templateParams = {
+    //         website: formData.website,
+    //         name: formData.fields[0].value,
+    //         email: formData.fields[1].value,
+    //         comment: formData.fields[2].value,
+    //     };
 
-        emailjs
-            .send(
-                "service_tmo76bn",
-                "template_pfang7n",
-                templateParams,
-                "aMDOy4kUud9rd0Yg9"
-            )
-            .then(function () {
-                setIsSubmitted(true);
-            });
-    };
+    //     emailjs
+    //         .send(
+    //             "service_tmo76bn",
+    //             "template_pfang7n",
+    //             templateParams,
+    //             "aMDOy4kUud9rd0Yg9"
+    //         )
+    //         .then(function () {
+    //             setIsSubmitted(true);
+    //         });
+    // };
 
     return (
         <form name="contact" data-netlify="true">
@@ -57,7 +57,7 @@ const ContactForm = ({ config }) => {
                     <Button
                         color="secondary"
                         variant="contained"
-                        onClick={handleSendEmail}
+                        // onClick={handleSendEmail}
                     >
                         Submit
                     </Button>
