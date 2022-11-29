@@ -20,6 +20,7 @@ const Admin = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [loginError, setLoginError] = useState(null);
+    const [isGallery, setIsGallery] = useState(false);
 
     const handleSignIn = async () => {
         const user = await login();
@@ -55,6 +56,9 @@ const Admin = () => {
     const handleEmailChange = (e) => {
         setEmail(e.target.value);
     };
+    const handleTabChange = (e) => {
+        setIsGallery(e.target.value === "gallery");
+    };
     const handlePasswordChange = (e) => {
         setPassword(e.target.value);
     };
@@ -62,7 +66,7 @@ const Admin = () => {
     return (
         <PageLayout name="Admin">
             <Container maxWidth="xl">
-                <Box sx={{ padding: "4rem 0" }}>
+                <Box>
                     {!isLoggedIn && (
                         <Container maxWidth="sm">
                             <Box
@@ -72,14 +76,7 @@ const Admin = () => {
                                     gap: "1em",
                                 }}
                             >
-                                {/* <Button
-                                    variant="contained"
-                                    color="secondary"
-                                    onClick={handleSignIn}
-                                    sx={{ marginBottom: "1rem" }}
-                                >
-                                    Sign in with google
-                                </Button> */}
+                                <form>
                                 <TextField
                                     label="email"
                                     focused
@@ -118,6 +115,7 @@ const Admin = () => {
                                         Log in with email
                                     </Button>
                                 </Box>
+                                </form>
                             </Box>
                         </Container>
                     )}
@@ -125,46 +123,68 @@ const Admin = () => {
                         <Box sx={{ marginBottom: "3rem" }}>
                             <Grid container spacing={8}>
                                 <Grid item xs={12} md={6}>
-                                    <FirebaseUploadForm
-                                        config={galleryConfig}
-                                        folder="gallery"
-                                        updateCounter={updateCounter}
-                                        setUpdateCounter={setUpdateCounter}
-                                    />
-                                </Grid>
-                                <Grid item xs={12} md={6}>
-                                    <FirestoreListing
-                                        // category={galleryConfig.category}
-                                        folder="gallery"
-                                        updateCounter={updateCounter}
-                                        setUpdateCounter={setUpdateCounter}
-                                    />
-                                </Grid>
-                                <Grid item xs={12} md={6}>
-                                    <FirebaseUploadEvent
-                                        config={eventConfig}
-                                        folder="events"
-                                        updateCounter={updateCounter}
-                                        setUpdateCounter={setUpdateCounter}
-                                    />
-                                </Grid>
-                                <Grid item xs={12} md={6}>
-                                    <FirestoreEventsListing
-                                        // category={galleryConfig.category}
-                                        config={eventConfig}
-                                        folder="events"
-                                        updateCounter={updateCounter}
-                                        setUpdateCounter={setUpdateCounter}
-                                    />
+                                    <label className="admin-tab">
+                                        <input type="radio" 
+                                            name="adminTab"  
+                                            onClick={handleTabChange}
+                                            value="event"/>Events
+                                    </label>
+                                    <label className="admin-tab">
+                                        <input type="radio" 
+                                            name="adminTab"
+                                            onClick={handleTabChange}
+                                            value="gallery"/>Gallery
+                                    </label>
+                                    <br/>
+                                    <br/>
+                                    <br/>
                                 </Grid>
                             </Grid>
+                            {isGallery ? (
+                                <Grid container spacing={8}>
+                                    <Grid item xs={12} md={6}>
+                                        <FirebaseUploadForm
+                                            config={galleryConfig}
+                                            folder="gallery"
+                                            updateCounter={updateCounter}
+                                            setUpdateCounter={setUpdateCounter}
+                                        />
+                                    </Grid>
+                                    <Grid item xs={12} md={6}>
+                                        <FirestoreListing
+                                            // category={galleryConfig.category}
+                                            folder="gallery"
+                                            updateCounter={updateCounter}
+                                            setUpdateCounter={setUpdateCounter}
+                                        />
+                                    </Grid>
+                                </Grid>
+                            ) : (
+                                <Grid container spacing={8}>
+                                    <Grid item xs={12} md={6}>
+                                        <FirebaseUploadEvent
+                                            config={eventConfig}
+                                            folder="events"
+                                            updateCounter={updateCounter}
+                                            setUpdateCounter={setUpdateCounter}
+                                        />
+                                    </Grid>
+                                    <Grid item xs={12} md={6}>
+                                        <FirestoreEventsListing
+                                            // category={galleryConfig.category}
+                                            config={eventConfig}
+                                            folder="events"
+                                            updateCounter={updateCounter}
+                                            setUpdateCounter={setUpdateCounter}
+                                        />
+                                    </Grid>
+                                </Grid>
+                            )}
                         </Box>
                     ) : (
                         <Container maxWidth="sm">
                             <Typography>
                                 You are not logged in as an administrator.
-                                Please contact Dave at hello@fictionalweb.com if
-                                you continue to experience difficulties.
                             </Typography>
                         </Container>
                     )}

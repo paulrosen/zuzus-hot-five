@@ -191,7 +191,7 @@ const FirebaseUploadForm = ({
             }}
         >
             <Typography variant="h3" sx={{ color: "black" }}>
-                Upload new item to {folder}.
+                Add to {folder}
             </Typography>
             <Box>
                 <Button

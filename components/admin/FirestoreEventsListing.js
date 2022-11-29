@@ -38,10 +38,10 @@ const FirestoreListing = ({ folder, updateCounter, setUpdateCounter }) => {
             }}
         >
             <Typography variant="h3" sx={{ color: "black" }}>
-                Update or delete item in {folder}.
+                Update Event
             </Typography>
             <Box sx={{ display: "flex", alignItems: "end", gap: ".5em" }}>
-                <Typography>Search by image title:</Typography>
+                <Typography>Search by event title:</Typography>
                 <Input
                     color="secondary"
                     type="text"

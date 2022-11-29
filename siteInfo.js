@@ -99,7 +99,7 @@ const eventsPreviewContent = {
 const galleryConfig = {
     categories: [],
     subCategories: [],
-    fields: [{ name: "Title", type: "text", value: "" }],
+    fields: [{ name: "Alt", type: "text", value: "" }],
 };
 
 const subscribeConfig = {
@@ -184,9 +184,10 @@ const eventConfig = {
     subCategories: [],
     fields: [
         { name: "Title", type: "text", value: "" },
-        { name: "Start Date", type: "date", value: "" },
-        { name: "End Date", type: "date", value: "" },
+        { name: "Subtitle", type: "text", value: "" },
         { name: "Venue", type: "text", value: "" },
+        { name: "Address", type: "text", value: "" },
+        { name: "Date", type: "date", value: "" },
         { name: "Time", type: "text", value: "" },
         {
             name: "Description",
