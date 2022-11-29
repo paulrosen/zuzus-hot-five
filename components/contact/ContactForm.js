@@ -32,6 +32,7 @@ const ContactForm = ({ config }) => {
     };
 
     return (
+        <form name="contact" data-netlify="true">
         <Box
             sx={{
                 display: "flex",
@@ -65,6 +66,7 @@ const ContactForm = ({ config }) => {
                 <Typography>Thanks! We will be in touch soon!</Typography>
             )}
         </Box>
+        </form>
     );
 };
 
