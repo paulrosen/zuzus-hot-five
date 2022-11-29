@@ -31,10 +31,6 @@
 		{
 			"filePath": "hooks/useLogin.js",
 			"group": "Default"
-		},
-		{
-			"filePath": "firebase.js",
-			"group": "Default"
 		}
 	]
 }

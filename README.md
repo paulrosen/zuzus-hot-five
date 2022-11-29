@@ -22,6 +22,65 @@ Every time you want to run, do this:
 ```
 That will give you a command line in the virtual machine that you can run `npm` from.
 
+## Firebase
+Go to https://firebase.google.com and create a google account.
+
+Click "create a project". Call it "zuzus-hot-five". Do not use analytics.
+
+Create a web app. Call it "zuzu". Do not use hosting.
+
+Create the file `.env.development`. It should contain:
+```
+NEXT_PUBLIC_API_KEY=
+NEXT_PUBLIC_AUTH_DOMAIN=
+NEXT_PUBLIC_PROJECT_ID=
+NEXT_PUBLIC_STORAGE_BUCKET=
+NEXT_PUBLIC_MESSAGING_SENDER_ID=
+NEXT_PUBLIC_APP_ID=
+```
+After creating the app, firebase will show you the values that you should use for those variables.
+
+From the firebase dashboard, do "create database" and "start in production mode".
+
+Change the rules to:
+```
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /{document=**} {
+      allow read, write: if request.auth != null;
+    }
+  }
+}
+```
+Create a collection called "events". It should have the following fields:
+* title
+* subtitle
+* venue
+* address
+* date
+* time
+* description
+* venue_website
+* facebook_url
+All of these should be strings.
+
+Create a collection called "gallery". It should have the following fields:
+* URL
+* alt
+All of these should be strings.
+
+On the firebase dashboard, click "authentication" and "get started".
+Click "email provider" and enable "email/password".
+
+On `https://console.firebase.google.com/project/zuzus-hot-five/authentication/settings` click "authorized domains" and add "zuzus-hot-five-next.netlify.app" and "zuzushotfive.com"
+
+After setting up the dev environment, go to `http://localhost:3000/susanna` and put in an email and password and click "sign up".
+
+Then in firebase go to `https://console.firebase.google.com/project/zuzus-hot-five/authentication/users` and click "users"
+
+TODO: How do I add "admin" privileges?
+
 ## Getting Started
 
 First, run the development server:
