@@ -71,8 +71,8 @@ const index = () => {
                                         local music teacher, his band of 30
                                         years, Uncle Henry&apos;s Favorites, was
                                         featured on Garrison Keillor&apos;s A
-                                        Prarie Home Companion. He also plays
-                                        swing and Old Time musice with The
+                                        Prairie Home Companion. He also plays
+                                        swing and Old Time music with The
                                         Lovell Coleman Band.
                                     </Typography>
                                 </ListItemText>
@@ -91,6 +91,18 @@ const index = () => {
                                         Charlottesville and Waynesboro
                                         Symphonies and with Bill Carrol&apos;s
                                         BC Big Rhythm Sound of Lynchburg, VA.
+                                    </Typography>
+                                </ListItemText>
+                            </ListItem>
+                            <ListItem
+                                sx={{
+                                    listStyleType: "disc",
+                                    display: "list-item",
+                                }}
+                            >
+                                <ListItemText>
+                                    <Typography>
+                                    <strong>Brandon Rose</strong> has provided his excellent trumpet and cornet skills for Baaba Seth, Conjunto Sason, The UVA Jazz Ensemble, The Crozet Symphony, and Mami Gato. He also plays with The Queen City Porch Swingers.
                                     </Typography>
                                 </ListItemText>
                             </ListItem>
@@ -163,7 +175,7 @@ const index = () => {
                                     <Typography>
                                         <strong>Susanna Rosen</strong> (vocals,
                                         ukuleles) has toured with The Alex Caton
-                                        Band and Acme Swing Mfg. Co. She
+                                        Band and ACME Swing Mfg. Co. She
                                         currently also appears with The Bob
                                         Bennetta Trio and Jelly Street Jazz.
                                     </Typography>
@@ -238,7 +250,7 @@ const index = () => {
                     <Profile profile={secondaryProfiles[0]}>
                         <Typography>
                             <strong>Susanna Rosen</strong> (vocals, ukuleles)
-                            has toured with The Alex Caton Band and Acme Swing
+                            has toured with The Alex Caton Band and ACME Swing
                             Mfg. Co. She currently also appears with The Bob
                             Bennetta Trio and Jelly Street Jazz.
                         </Typography>
@@ -360,7 +372,7 @@ export default index;
                                 <Typography>
                                     <strong>Susanna Rosen</strong> (vocals,
                                     ukuleles) has toured with The Alex Caton
-                                    Band and Acme Swing Mfg. Co. She currently
+                                    Band and ACME Swing Mfg. Co. She currently
                                     also appears with The Bob Bennetta Trio and
                                     Jelly Street Jazz.
                                 </Typography>
