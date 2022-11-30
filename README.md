@@ -80,6 +80,8 @@ After setting up the dev environment, go to `http://localhost:3000/susanna` and 
 
 Then in firebase go to the zuzus-hot-five firestore database and click "users". Change the "admin" field to true.
 
+After all the users are created, then remove the "sign up" button.
+
 ## Getting Started
 
 First, run the development server:

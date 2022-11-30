@@ -93,14 +93,14 @@ const Admin = () => {
                                     </Typography>
                                 )}
                                 <Box sx={{ display: "flex", gap: "1em" }}>
-                                    <Button
+                                    {/* <Button
                                         variant="contained"
                                         color="secondary"
                                         onClick={handleSignUpEmail}
                                         sx={{ marginBottom: "1rem" }}
                                     >
                                         Sign up
-                                    </Button>
+                                    </Button> */}
                                     <Button
                                         variant="contained"
                                         color="secondary"
@@ -179,7 +179,7 @@ const Admin = () => {
                     ) : (
                         <Container maxWidth="sm">
                             <Typography>
-                                You are not logged in as an administrator.
+                                You are not logged in.
                             </Typography>
                         </Container>
                     )}
