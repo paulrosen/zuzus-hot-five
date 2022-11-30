@@ -51,7 +51,7 @@ const EventItem = ({ fields, isPreview }) => {
                     </Typography>
                     <Typography>{subtitle}</Typography>
                     <Typography>{venue}</Typography>
-                    <Typography>{`${formatHtmlDate(date)}, ${time}`}</Typography>
+                    <Typography><b>{formatHtmlDate(date)}</b> {time}</Typography>
 
                     <br />
                     <Typography>{description}</Typography>

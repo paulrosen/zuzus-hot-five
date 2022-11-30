@@ -26,7 +26,7 @@ function useGetEvents(folder) {
             );
             const q2 = query(
                 eventsRef,
-                orderBy("startDate", "asc"),
+                orderBy("startDate", "desc"),
                 where("startDate", "<", today),
                 limit(50)
             );
