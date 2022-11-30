@@ -228,15 +228,13 @@ const FirebaseUploadGallery = ({
                                         gap: ".5rem",
                                     }}
                                 >
-                                    <Image
-                                        blurDataURL={preview}
-                                        placeholder="blur"
+                                    <div>
+                                    <img
                                         src={preview}
                                         alt="image preview"
-                                        width="100px"
                                         height="100px"
-                                        layout="responsive"
                                     />
+                                    </div>
                                     <Button
                                         variant="contained"
                                         onClick={() => {
@@ -275,7 +273,7 @@ const FirebaseUploadGallery = ({
                 onClick={handleUpload}
                 disabled={isUploading}
             >Upload</Button>
-            {fileError !== "false" && <Typography>{fileError}</Typography>}
+            {fileError !== "false" && <Typography className="admin-error">{fileError}</Typography>}
         </Box>
     );
 };

@@ -7,6 +7,7 @@ import { deleteDoc, doc, setDoc } from "firebase/firestore";
 import { useState } from "react";
 import ButtonWithConfirm from "../general/ButtonWithConfirm";
 import theme from "../../styles/themes/theme";
+import Image from "next/image";
 
 const FirestoreListingItem = ({
     folder,
@@ -18,6 +19,7 @@ const FirestoreListingItem = ({
     const [formData, setFormData] = useState(JSON.parse(JSON.stringify(image)));
     const [isUpdating, setIsUpdating] = useState(false);
     const [isExpanded, setIsExpanded] = useState(false);
+    console.log(formData)
 
     const handleExpand = () => {
         setIsExpanded(true);
@@ -72,6 +74,8 @@ const FirestoreListingItem = ({
                     }}
                     onClick={handleExpand}
                 >
+                    <img src={image.URLs[0]} alt={image.fields[0].value} 
+                    height="80px;"/>
                     <Typography>{image.fields[0].value}</Typography>
                     <ExpandMoreIcon />
                 </Box>
