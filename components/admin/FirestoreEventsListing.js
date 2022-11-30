@@ -6,8 +6,10 @@ import FirestoreEventsListingItem from "./FirestoreEventsListingItem";
 const FirestoreEventsListing = ({ folder, updateCounter, setUpdateCounter }) => {
     const [currentEvents, pastEvents] = useGetEvents(updateCounter, "events");
     const [shownEvents, setShownEvents] = useState([]);
+    const [currentSearch, setCurrentSearch] = useState("");
 
     const handleSearchChange = (e) => {
+        setCurrentSearch(e.target.value)
         if (e.target.value === "") {
             setShownEvents(currentEvents);
             return;
@@ -28,7 +30,8 @@ const FirestoreEventsListing = ({ folder, updateCounter, setUpdateCounter }) => 
         setShownEvents(newShownEvents);
     };
     setTimeout(() => {
-        handleSearchChange({target: { value: ""}})
+        if (!currentSearch && shownEvents && shownEvents.length === 0)
+            handleSearchChange({target: { value: ""}})
     }, 500)
 
     return (
@@ -58,7 +61,7 @@ const FirestoreEventsListing = ({ folder, updateCounter, setUpdateCounter }) => 
                     return (
                         <FirestoreEventsListingItem
                             folder={folder}
-                            key={index}
+                            key={event.id}
                             event={event}
                             updateCounter={updateCounter}
                             setUpdateCounter={setUpdateCounter}

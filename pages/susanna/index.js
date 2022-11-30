@@ -12,6 +12,7 @@ import { eventConfig, galleryConfig } from "../../siteInfo";
 import PageLayout from "../../components/layout/PageLayout.js";
 import signUpEmail from "../../utility/signUpEmail.js";
 import loginEmail from "../../utility/loginEmail.js";
+import Meta from "../../components/home/Meta";
 
 const Admin = () => {
     const [isAdmin, setIsAdmin] = useState(false);
@@ -65,6 +66,7 @@ const Admin = () => {
 
     return (
             <Container maxWidth="xl">
+                     <Meta />
                 <br/>
                 <br/>
                 <br/>
@@ -121,7 +123,7 @@ const Admin = () => {
                         <Box sx={{ marginBottom: "3rem" }}>
                             <Grid container spacing={8}>
                                 <Grid item xs={12} md={6}>
-                                    <div class="admin-tab-container">
+                                    <div className="admin-tab-container">
                                     <label className="admin-tab">
                                         <input type="radio" 
                                             name="adminTab"  

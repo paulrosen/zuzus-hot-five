@@ -39,12 +39,21 @@ const FirestoreListingItem = ({
 
     const handleUpdate = async () => {
         setIsUpdating(true);
-        console.log(event.data());
+        const date = event.data().fields.filter(field => {
+            return field.name === "Date"
+        })
+        // TODO-PER: need to set event.data().startDate somehow to date.value
         const docRef = doc(db, folder, event.id);
         await setDoc(docRef, formData).then(() => {
             setIsExpanded(false);
             setIsUpdating(false);
         });
+    };
+
+    const handleDuplicate = () => {
+        const fields = event.data().fields
+        console.log(fields)
+        // TODO-PER: how do I set these values on the "add event" form?
     };
 
     const handleFieldChange = (e, field, index) => {
@@ -71,7 +80,10 @@ const FirestoreListingItem = ({
                     }}
                     onClick={handleExpand}
                 >
-                    <Typography>{event.data().fields[0].value}</Typography>
+                    <div>
+                    <Typography>{event.data().fields[0].value} <b>{event.data().fields[4].value}</b></Typography>
+                    <Typography>{event.data().fields[2].value}</Typography>
+                    </div>
                     <ExpandMoreIcon />
                 </Box>
             ) : (
@@ -119,6 +131,10 @@ const FirestoreListingItem = ({
                         }}
                     >
                         <Box sx={{ display: "flex", gap: "1em" }}>
+                            <Button
+                                variant="contained"
+                                onClick={handleDuplicate}
+                            >Duplicate</Button>
                             <Button
                                 variant="contained"
                                 onClick={handleUpdate}

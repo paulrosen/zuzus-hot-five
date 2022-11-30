@@ -19,7 +19,6 @@ const FirestoreListingItem = ({
     const [formData, setFormData] = useState(JSON.parse(JSON.stringify(image)));
     const [isUpdating, setIsUpdating] = useState(false);
     const [isExpanded, setIsExpanded] = useState(false);
-    console.log(formData)
 
     const handleExpand = () => {
         setIsExpanded(true);

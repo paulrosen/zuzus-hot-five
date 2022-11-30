@@ -20,7 +20,7 @@ const GalleryImage = ({ image, category, subCategory }) => {
                     setRatio(naturalWidth / naturalHeight)
                 }
                 layout="responsive"
-                alt={image.description}
+                alt={image.fields[0].value}
             />
             <Box
                 sx={{

@@ -6,8 +6,10 @@ import FirestoreListingItem from "./FirestoreGalleryListingItem";
 const FirestoreGalleryListing = ({ folder, updateCounter, setUpdateCounter }) => {
     const [images] = useGetImages(updateCounter, folder);
     const [shownImages, setShownImages] = useState([]);
+    const [currentSearch, setCurrentSearch] = useState("");
 
     const handleSearchChange = (e) => {
+        setCurrentSearch(e.target.value)
         if (e.target.value === "") {
             setShownImages(images);
             return;
@@ -21,7 +23,8 @@ const FirestoreGalleryListing = ({ folder, updateCounter, setUpdateCounter }) =>
     };
 
     setTimeout(() => {
-        handleSearchChange({target: { value: ""}})
+        if (!currentSearch && shownImages && shownImages.length === 0)
+            handleSearchChange({target: { value: ""}})
     }, 500)
 
     return (
