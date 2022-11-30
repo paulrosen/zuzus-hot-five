@@ -3,7 +3,7 @@ import { Container } from "@mui/system";
 
 import Meta from "../components/home/Meta";
 import Hero from "../components/home/Hero";
-import { blockPhotoContentOne, musicPreviewContent } from "../siteInfo";
+import { blockPhotoContentOne } from "../siteInfo";
 import AboutPreview from "../components/home/AboutPreview";
 import EventsPreview from "../components/home/EventsPreview";
 import BlockPhoto from "../components/general/BlockPhoto";
@@ -18,7 +18,6 @@ export default function Home() {
             <Container maxWidth="xl" disableGutters>
                 <section>
                 <MusicPreview
-                    musicPreviewContent={musicPreviewContent}
                     variation={1}
                 />
                 </section>
