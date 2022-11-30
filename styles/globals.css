@@ -327,3 +327,6 @@ a.skiplink-text:active, a.skiplink-text:focus, a.skiplink-text:hover {
 .admin-error {
     color: red;
 }
+.admin-error:empty {
+    display: none;
+}

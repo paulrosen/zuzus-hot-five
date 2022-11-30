@@ -271,13 +271,11 @@ const FirebaseUploadForm = ({
                 );
             })}
 
-            <ButtonWithConfirm
-                handleClick={handleUpload}
-                isDisabled={isUploading}
-                buttonText="Upload"
-                dialogText="Are you sure you want to upload this item?"
-                notificationText="File Uploading..."
-            />
+            <Button
+                variant="contained"
+                onClick={handleUpload}
+                disabled={isUploading}
+            >Upload</Button>
             {fileError !== "false" && <Typography>{fileError}</Typography>}
         </Box>
     );

@@ -49,6 +49,7 @@ const EventItem = ({ fields, isPreview }) => {
                     >
                         {title}
                     </Typography>
+                    <Typography>{subtitle}</Typography>
                     <Typography>{venue}</Typography>
                     <Typography>{`${formatHtmlDate(date)}, ${time}`}</Typography>
 

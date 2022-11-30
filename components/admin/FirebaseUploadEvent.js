@@ -1,10 +1,9 @@
-import { TextField, Typography } from "@mui/material";
+import { Button, TextField, Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import { addDoc, collection } from "firebase/firestore";
 import React from "react";
 import { useState } from "react";
 import { db } from "../../firebase";
-import ButtonWithConfirm from "../general/ButtonWithConfirm";
 
 const FirebaseUploadForm = ({
     config,
@@ -97,14 +96,13 @@ const FirebaseUploadForm = ({
             <ul className="admin-error">
                 {fileError.map((error) => {
                     return (<li key={error}>{error}</li>)})
-                }</ul>
-            <ButtonWithConfirm
-                handleClick={handleUpload}
-                isDisabled={isUploading}
-                buttonText="Upload"
-                dialogText="Are you sure you want to save this event?"
-                notificationText="Saving Event..."
-            />
+                }
+            </ul>
+            <Button
+                variant="contained"
+                onClick={handleUpload}
+                disabled={isUploading}
+            >Upload</Button>
         </Box>
     );
 };

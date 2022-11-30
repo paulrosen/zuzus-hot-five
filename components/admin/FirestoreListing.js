@@ -33,7 +33,7 @@ const FirestoreListing = ({ folder, updateCounter, setUpdateCounter }) => {
                 Update item in {folder}
             </Typography>
             <Box sx={{ display: "flex", alignItems: "end", gap: ".5em" }}>
-                <Typography>Search by image title:</Typography>
+                <Typography>Search by alt text:</Typography>
                 <Input
                     color="secondary"
                     type="text"

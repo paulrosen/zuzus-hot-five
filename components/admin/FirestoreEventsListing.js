@@ -9,7 +9,7 @@ const FirestoreListing = ({ folder, updateCounter, setUpdateCounter }) => {
 
     const handleSearchChange = (e) => {
         if (e.target.value === "") {
-            setShownEvents([]);
+            setShownEvents(currentEvents);
             return;
         }
         let newShownCurrentEvents = currentEvents.filter((event) =>
@@ -27,6 +27,9 @@ const FirestoreListing = ({ folder, updateCounter, setUpdateCounter }) => {
         let newShownEvents = newShownCurrentEvents.concat(newShownPastEvents);
         setShownEvents(newShownEvents);
     };
+    setTimeout(() => {
+        handleSearchChange({target: { value: ""}})
+    }, 500)
 
     return (
         <Box
