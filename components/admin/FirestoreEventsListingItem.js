@@ -7,6 +7,7 @@ import { deleteDoc, doc, setDoc } from "firebase/firestore";
 import { useState } from "react";
 import ButtonWithConfirm from "../general/ButtonWithConfirm";
 import theme from "../../styles/themes/theme";
+import { formatHtmlDate } from "../../utility/general";
 
 const FirestoreListingItem = ({
     folder,
@@ -81,7 +82,7 @@ const FirestoreListingItem = ({
                     onClick={handleExpand}
                 >
                     <div>
-                    <Typography>{event.data().fields[0].value} <b>{event.data().fields[4].value}</b></Typography>
+                    <Typography>{event.data().fields[0].value} <b>{formatHtmlDate(event.data().fields[4].value)}</b></Typography>
                     <Typography>{event.data().fields[2].value}</Typography>
                     </div>
                     <ExpandMoreIcon />

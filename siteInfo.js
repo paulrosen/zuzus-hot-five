@@ -188,7 +188,7 @@ const eventConfig = {
         { name: "Venue", type: "text", value: "", required: true },
         { name: "Address", type: "text", value: "" },
         { name: "Date", type: "date", value: "", required: true },
-        { name: "Time", type: "text", value: "", required: true },
+        { name: "Time", type: "text", value: "" },
         {
             name: "Description",
             type: "text",
