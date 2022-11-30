@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import useGetEvents from "../../hooks/useGetEvents";
 import FirestoreEventsListingItem from "./FirestoreEventsListingItem";
 
-const FirestoreListing = ({ folder, updateCounter, setUpdateCounter }) => {
+const FirestoreEventsListing = ({ folder, updateCounter, setUpdateCounter }) => {
     const [currentEvents, pastEvents] = useGetEvents(updateCounter, "events");
     const [shownEvents, setShownEvents] = useState([]);
 
@@ -73,4 +73,4 @@ const FirestoreListing = ({ folder, updateCounter, setUpdateCounter }) => {
     );
 };
 
-export default FirestoreListing;
+export default FirestoreEventsListing;

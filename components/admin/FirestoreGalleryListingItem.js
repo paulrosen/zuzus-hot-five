@@ -121,7 +121,8 @@ const FirestoreListingItem = ({
                     >
                         <Box sx={{ display: "flex", gap: "1em" }}>
                             <Button
-                                onClick={handleUpdate}
+                            variant="contained"
+                            onClick={handleUpdate}
                                 disabled={isUpdating}
                             >Update</Button>
                             <ButtonWithConfirm

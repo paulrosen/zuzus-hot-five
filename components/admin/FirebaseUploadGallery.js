@@ -7,9 +7,8 @@ import React from "react";
 import { useRef } from "react";
 import { useState } from "react";
 import { db, storage } from "../../firebase";
-import ButtonWithConfirm from "../general/ButtonWithConfirm";
 
-const FirebaseUploadForm = ({
+const FirebaseUploadGallery = ({
     config,
     folder,
     updateCounter,
@@ -281,4 +280,4 @@ const FirebaseUploadForm = ({
     );
 };
 
-export default FirebaseUploadForm;
+export default FirebaseUploadGallery;

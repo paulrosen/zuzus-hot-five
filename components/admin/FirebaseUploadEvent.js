@@ -5,7 +5,7 @@ import React from "react";
 import { useState } from "react";
 import { db } from "../../firebase";
 
-const FirebaseUploadForm = ({
+const FirebaseUploadEvent = ({
     config,
     folder,
     updateCounter,
@@ -107,4 +107,4 @@ const FirebaseUploadForm = ({
     );
 };
 
-export default FirebaseUploadForm;
+export default FirebaseUploadEvent;

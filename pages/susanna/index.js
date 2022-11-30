@@ -4,9 +4,9 @@ import { useState } from "react";
 import login from "../../utility/login.js";
 import { doc, getDoc } from "firebase/firestore";
 import { db } from "../../firebase.js";
-import FirebaseUploadForm from "../../components/admin/FirebaseUploadForm.js";
+import FirebaseUploadGallery from "../../components/admin/FirebaseUploadGallery.js";
 import FirebaseUploadEvent from "../../components/admin/FirebaseUploadEvent.js";
-import FirestoreListing from "../../components/admin/FirestoreListing.js";
+import FirestoreGalleryListing from "../../components/admin/FirestoreGalleryListing.js";
 import FirestoreEventsListing from "../../components/admin/FirestoreEventsListing.js";
 import { eventConfig, galleryConfig } from "../../siteInfo";
 import PageLayout from "../../components/layout/PageLayout.js";
@@ -64,8 +64,10 @@ const Admin = () => {
     };
 
     return (
-        <PageLayout name="Admin">
             <Container maxWidth="xl">
+                <br/>
+                <br/>
+                <br/>
                 <Box>
                     {!isLoggedIn && (
                         <Container maxWidth="sm">
@@ -73,6 +75,7 @@ const Admin = () => {
                                 <TextField
                                     InputLabelProps={{ shrink: true }}
                                     label="email"
+                                    autoComplete="username"
                                     focused
                                     color="secondary"
                                     value={email}
@@ -82,6 +85,7 @@ const Admin = () => {
                                     InputLabelProps={{ shrink: true }}
                                     type="password"
                                     label="password"
+                                    autoComplete="current-password"
                                     focused
                                     color="secondary"
                                     value={password}
@@ -117,6 +121,7 @@ const Admin = () => {
                         <Box sx={{ marginBottom: "3rem" }}>
                             <Grid container spacing={8}>
                                 <Grid item xs={12} md={6}>
+                                    <div class="admin-tab-container">
                                     <label className="admin-tab">
                                         <input type="radio" 
                                             name="adminTab"  
@@ -130,15 +135,13 @@ const Admin = () => {
                                             onClick={handleTabChange}
                                             value="gallery"/>Gallery
                                     </label>
-                                    <br/>
-                                    <br/>
-                                    <br/>
+                                    </div>
                                 </Grid>
                             </Grid>
                             {isGallery ? (
                                 <Grid container spacing={8}>
                                     <Grid item xs={12} md={6}>
-                                        <FirebaseUploadForm
+                                        <FirebaseUploadGallery
                                             config={galleryConfig}
                                             folder="gallery"
                                             updateCounter={updateCounter}
@@ -146,7 +149,7 @@ const Admin = () => {
                                         />
                                     </Grid>
                                     <Grid item xs={12} md={6}>
-                                        <FirestoreListing
+                                        <FirestoreGalleryListing
                                             // category={galleryConfig.category}
                                             folder="gallery"
                                             updateCounter={updateCounter}
@@ -185,7 +188,6 @@ const Admin = () => {
                     )}
                 </Box>
             </Container>
-        </PageLayout>
     );
 };
 

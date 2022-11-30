@@ -1,15 +1,15 @@
 import { Box, Input, Typography } from "@mui/material";
 import React, { useState } from "react";
 import useGetImages from "../../hooks/useGetImages";
-import FirestoreListingItem from "./FirestoreListingItem";
+import FirestoreListingItem from "./FirestoreGalleryListingItem";
 
-const FirestoreListing = ({ folder, updateCounter, setUpdateCounter }) => {
+const FirestoreGalleryListing = ({ folder, updateCounter, setUpdateCounter }) => {
     const [images] = useGetImages(updateCounter, folder);
     const [shownImages, setShownImages] = useState([]);
 
     const handleSearchChange = (e) => {
         if (e.target.value === "") {
-            setShownImages([]);
+            setShownImages(images);
             return;
         }
         let newShownImages = images.filter((image) =>
@@ -19,6 +19,10 @@ const FirestoreListing = ({ folder, updateCounter, setUpdateCounter }) => {
         );
         setShownImages(newShownImages);
     };
+
+    setTimeout(() => {
+        handleSearchChange({target: { value: ""}})
+    }, 500)
 
     return (
         <Box
@@ -62,4 +66,4 @@ const FirestoreListing = ({ folder, updateCounter, setUpdateCounter }) => {
     );
 };
 
-export default FirestoreListing;
+export default FirestoreGalleryListing;

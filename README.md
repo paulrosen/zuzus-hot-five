@@ -23,8 +23,12 @@ Every time you want to run, do this:
 That will give you a command line in the virtual machine that you can run `npm` from.
 
 ## Firebase
+
+The data is stored on Google's Firebase.
+### Account
 Go to https://firebase.google.com and create a google account.
 
+### Creation
 Click "create a project". Call it "zuzus-hot-five". Do not use analytics.
 
 Create a web app. Call it "zuzu". Do not use hosting.
@@ -40,6 +44,7 @@ NEXT_PUBLIC_APP_ID=
 ```
 After creating the app, firebase will show you the values that you should use for those variables.
 
+### Database
 From the firebase dashboard, do "create database" and "start in production mode".
 
 Change the rules to:
@@ -71,6 +76,8 @@ Create a collection called "gallery". It should have the following fields:
 * alt
 All of these should be strings.
 
+### Authentication
+
 On the firebase dashboard, click "authentication" and "get started".
 Click "email provider" and enable "email/password".
 
@@ -81,6 +88,25 @@ After setting up the dev environment, go to `http://localhost:3000/susanna` and 
 Then in firebase go to the zuzus-hot-five firestore database and click "users". Change the "admin" field to true.
 
 After all the users are created, then remove the "sign up" button.
+
+### Image Storage
+From the [main page](https://console.firebase.google.com/project/zuzus-hot-five/overview) click "storage".
+
+Click "get started", "start in production mode" and finish the dialog.
+
+On the dashboard, click "rules" and change to:
+```
+rules_version = '2';
+service firebase.storage {
+  match /b/{bucket}/o {
+    match /{allPaths=**} {
+      allow read: if true;
+      allow write: if request.auth != null;
+     }
+  }
+}
+```
+On the dashboard, click "files" and the folder icon and add a folder called "gallery".
 
 ## Getting Started
 
