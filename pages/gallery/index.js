@@ -12,7 +12,6 @@ const Projects = () => {
             return;
         }
         images = images.filter(image => {
-            console.log(image)
             return image.fields[2] ? image.fields[2].value === "true" || image.fields[2].value === true : false;
         })    
     }

@@ -23,9 +23,11 @@ const GalleryImage = ({ image, category, subCategory }) => {
                 layout="responsive"
                 alt={image.fields[0].value}
             />
-            <figCaption>{image.fields[1] && image.fields[1].value ? `Photo by ${image.fields[1].value}` : ''}</figCaption>
+            <figcaption>{image.fields[1] && image.fields[1].value ? `Photo by ${image.fields[1].value}` : ''}</figcaption>
             </figure>
             <Box
+                component="a"
+                href={image.URLs[0]}
                 sx={{
                     padding: "1em",
                     display: "flex",
@@ -44,9 +46,7 @@ const GalleryImage = ({ image, category, subCategory }) => {
                     },
                 }}
             >
-                <a href={image.URLs[0]} download="test">
-                    <ArrowForward sx={{ color: "white", fontSize: "40px" }} />
-                </a>
+                <ArrowForward sx={{ color: "white", fontSize: "40px" }} />
             </Box>
         </Box>
     );
