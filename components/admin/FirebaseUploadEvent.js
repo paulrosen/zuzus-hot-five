@@ -71,7 +71,7 @@ const FirebaseUploadEvent = ({
                 borderRadius: "5px",
             }}
         >
-            <Typography variant="h3" sx={{ color: "black" }}>
+            <Typography variant="h2" sx={{ color: "black" }}>
                 Add Event
             </Typography>
 

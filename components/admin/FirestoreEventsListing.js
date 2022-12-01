@@ -9,22 +9,29 @@ const FirestoreEventsListing = ({ folder, updateCounter, setUpdateCounter }) => 
     const [currentSearch, setCurrentSearch] = useState("");
 
     const handleSearchChange = (e) => {
+        const eventFilter = (event) => {
+            const fields = event.data().fields;
+            let field = fields.find(f => f.name === "Title")
+            if (field && field.value.toLowerCase().includes(e.target.value.toLowerCase()))
+                return true
+            field = fields.find(f => f.name === "Venue")
+            if (field && field.value.toLowerCase().includes(e.target.value.toLowerCase()))
+                return true
+            field = fields.find(f => f.name === "Description")
+            if (field && field.value.toLowerCase().includes(e.target.value.toLowerCase()))
+                return true
+            return false;
+        }
         setCurrentSearch(e.target.value)
         if (e.target.value === "") {
             setShownEvents(currentEvents);
             return;
         }
         let newShownCurrentEvents = currentEvents.filter((event) =>
-            event
-                .data()
-                .fields[0].value.toLowerCase()
-                .includes(e.target.value.toLowerCase())
+            eventFilter(event)
         );
         let newShownPastEvents = pastEvents.filter((event) =>
-            event
-                .data()
-                .fields[0].value.toLowerCase()
-                .includes(e.target.value.toLowerCase())
+            eventFilter(event)
         );
         let newShownEvents = newShownCurrentEvents.concat(newShownPastEvents);
         setShownEvents(newShownEvents);
@@ -43,11 +50,11 @@ const FirestoreEventsListing = ({ folder, updateCounter, setUpdateCounter }) => 
                 height: "100%",
             }}
         >
-            <Typography variant="h3" sx={{ color: "black" }}>
+            <Typography variant="h2" sx={{ color: "black" }}>
                 Update Event
             </Typography>
             <Box sx={{ display: "flex", alignItems: "end", gap: ".5em" }}>
-                <Typography>Search by event title:</Typography>
+                <Typography>Search for event:</Typography>
                 <Input
                     color="secondary"
                     type="text"

@@ -65,7 +65,7 @@ const Admin = () => {
     };
 
     return (
-            <Container maxWidth="xl">
+            <Container maxWidth="xl" className="admin-page">
                      <Meta />
                 <br/>
                 <br/>

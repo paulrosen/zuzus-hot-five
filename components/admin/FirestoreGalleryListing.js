@@ -36,7 +36,7 @@ const FirestoreGalleryListing = ({ folder, updateCounter, setUpdateCounter }) =>
                 height: "100%",
             }}
         >
-            <Typography variant="h3" sx={{ color: "black" }}>
+            <Typography variant="h2" sx={{ color: "black" }}>
                 Update item in {folder}
             </Typography>
             <Box sx={{ display: "flex", alignItems: "end", gap: ".5em" }}>

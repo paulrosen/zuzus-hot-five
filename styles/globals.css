@@ -322,6 +322,12 @@ a.skiplink-text:active, a.skiplink-text:focus, a.skiplink-text:hover {
     margin-right: 10px;
 }
 
+.admin-page h2 {
+    font-family: Roboto, Helvetica, Arial, sans-serif;
+    font-size: 40px;
+    font-weight: bold;
+}
+
 .login-form {
     display: flex;
     flex-direction: column;
