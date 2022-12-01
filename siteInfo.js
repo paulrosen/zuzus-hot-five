@@ -184,7 +184,6 @@ const eventConfig = {
     subCategories: [],
     fields: [
         { name: "Title", type: "text", value: "", required: true },
-        { name: "Subtitle", type: "text", value: "" },
         { name: "Venue", type: "text", value: "", required: true },
         { name: "Address", type: "text", value: "" },
         { name: "Date", type: "date", value: "", required: true },

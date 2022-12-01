@@ -16,7 +16,6 @@ const EventItem = ({ fields, isPreview }) => {
         })
     }
     const title = fieldObj.title
-    const subtitle = fieldObj.subtitle
     const venue = fieldObj.venue
     const address = fieldObj.address
     const date = fieldObj.date ? fieldObj.date : "1970-01-01"
@@ -49,7 +48,6 @@ const EventItem = ({ fields, isPreview }) => {
                     >
                         {title}
                     </Typography>
-                    <Typography>{subtitle}</Typography>
                     <Typography>{venue}</Typography>
                     <Typography><b>{formatHtmlDate(date)}</b> {time}</Typography>
 

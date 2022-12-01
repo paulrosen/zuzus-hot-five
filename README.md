@@ -61,7 +61,6 @@ service cloud.firestore {
 ```
 Create a collection called "events". It should have the following fields:
 * title
-* subtitle
 * venue
 * address
 * date
