@@ -99,7 +99,11 @@ const eventsPreviewContent = {
 const galleryConfig = {
     categories: [],
     subCategories: [],
-    fields: [{ name: "Alt", type: "text", value: "" }],
+    fields: [
+        { name: "Alt", type: "text", value: "" },
+        { name: "Credit", type: "text", value: "" },
+        { name: "Shown", type: "checkbox", value: true },
+    ],
 };
 
 const subscribeConfig = {

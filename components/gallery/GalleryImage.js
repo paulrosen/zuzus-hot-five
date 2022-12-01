@@ -8,6 +8,7 @@ const GalleryImage = ({ image, category, subCategory }) => {
 
     return (
         <Box sx={{ position: "relative" }}>
+            <figure>
             <Image
                 src={image.URLs[0]}
                 blurDataURL={image}
@@ -22,6 +23,8 @@ const GalleryImage = ({ image, category, subCategory }) => {
                 layout="responsive"
                 alt={image.fields[0].value}
             />
+            <figCaption>{image.fields[1] && image.fields[1].value ? `Photo by ${image.fields[1].value}` : ''}</figCaption>
+            </figure>
             <Box
                 sx={{
                     padding: "1em",

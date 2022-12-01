@@ -73,7 +73,9 @@ All of these should be strings.
 Create a collection called "gallery". It should have the following fields:
 * URL
 * alt
-All of these should be strings.
+* credit
+* shown (boolean)
+All of these should be strings, except where noted.
 
 ### Authentication
 

@@ -1,10 +1,6 @@
 {
 	"favorites.resources": [
 		{
-			"filePath": "components/admin",
-			"group": "Default"
-		},
-		{
 			"filePath": "utility/login.js",
 			"group": "Default"
 		},

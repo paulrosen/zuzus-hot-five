@@ -54,7 +54,7 @@ const FirestoreGalleryListing = ({ folder, updateCounter, setUpdateCounter }) =>
                     return (
                         <FirestoreListingItem
                             folder={folder}
-                            key={index}
+                            key={image.id}
                             image={image}
                             updateCounter={updateCounter}
                             setUpdateCounter={setUpdateCounter}

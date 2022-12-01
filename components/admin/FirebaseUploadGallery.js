@@ -78,7 +78,7 @@ const FirebaseUploadGallery = ({
             return;
         }
         if (formData.fields[0].value === "") {
-            setFileError("Please Enter a Title");
+            setFileError("Please Enter alt text");
             return;
         }
         var downloadURLs = [];
