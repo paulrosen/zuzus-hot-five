@@ -40,10 +40,6 @@ const FirestoreListingItem = ({
 
     const handleUpdate = async () => {
         setIsUpdating(true);
-        const date = event.data().fields.filter(field => {
-            return field.name === "Date"
-        })
-        // TODO-PER: need to set event.data().startDate somehow to date.value
         const docRef = doc(db, folder, event.id);
         await setDoc(docRef, formData).then(() => {
             setIsExpanded(false);
@@ -64,7 +60,16 @@ const FirestoreListingItem = ({
         };
         let newFormDataFields = formData.fields;
         newFormDataFields[index] = newFieldData;
-        setFormData({ ...formData, fields: newFormDataFields });
+
+        let newStartDate = formData.startDate;
+        if (formData.fields[index].name === "Date") {
+            newStartDate = e.target.value;
+        }
+        setFormData({
+            ...formData,
+            fields: newFormDataFields,
+            startDate: newStartDate,
+        });
     };
 
     return (
@@ -134,10 +139,6 @@ const FirestoreListingItem = ({
                         <Box sx={{ display: "flex", gap: "1em" }}>
                             <Button
                                 variant="contained"
-                                onClick={handleDuplicate}
-                            >Duplicate</Button>
-                            <Button
-                                variant="contained"
                                 onClick={handleUpdate}
                                 disabled={isUpdating}
                             >Update</Button>
@@ -148,6 +149,10 @@ const FirestoreListingItem = ({
                                 notificationText="Item Deleted!"
                                 isDisabled={isUpdating}
                             />
+                            <Button
+                                variant="contained"
+                                onClick={handleDuplicate}
+                            >Duplicate</Button>
                         </Box>
                         <IconButton
                             variant="contained"
