@@ -145,32 +145,39 @@ const aboutContent = {
 
 const secondaryProfiles = [
     {
-        image: { url: "/images/zuzus6.webp", alt: "alt zuzus6 text" },
-        name: "Pete Vigour",
+        url: "/images/headshots/zuzu-brandon-head.jpg", 
+        alt: "Brandon Rose Head Shot",
+        text: "<strong>Brandon Rose</strong> has provided his excellent trumpet and cornet skills for Baaba Seth, Conjunto Sason, The UVA Jazz Ensemble, The Crozet Symphony, and Mami Gato. He also plays with The Queen City Porch Swingers.",
     },
     {
-        image: { url: "/images/zuzus6.webp", alt: "alt zuzus6 text" },
-        name: "Gary Elwell",
+        url: "/images/headshots/zuzu-aaron-clarinet-posed.jpg", 
+        alt: "Aaron Olwell Head Shot",
+        text: "For over 20 years, string and wind instrumentalist <strong>Aaron Olwell</strong> has been steeped in Irish and Appalachian traditional music, but recently discovered the thrills of trad-jazz and the clarinet. He works with his father making 19th c. style wood flutes for musicians around the world. Aaron also tours with The Big Dixie Swingers from New Orleans, and was a founding member of Boxcar Speakeasy.",
     },
     {
-        image: { url: "/images/zuzus6.webp", alt: "alt zuzus6 text" },
-        name: "Brandon Rose",
+        url: "/images/headshots/zuzu-pete-head.jpg", 
+        alt: "Pete Vigour Head Shot",
+        text: "<strong>Pete Vigour</strong> is a multi-instrumentalist rooted in traditional music and turn-of-the-century genres. Longtime local music teacher, his band of 30 years, Uncle Henry&apos;s Favorites, was featured on Garrison Keillor&apos;s A Prairie Home Companion. He also plays swing and Old Time music with The Lovell Coleman Band.",
     },
     {
-        image: { url: "/images/zuzus6.webp", alt: "alt zuzus6 text" },
-        name: "Aaron Olwell",
+        url: "/images/headshots/zuzu-gary-side.jpg", 
+        alt: "Gary Elwell Head Shot",
+        text: "Trombonist <strong>Gary Elwell</strong> spend 27 years in the Army Band in DC. He has performed with the Charlottesville and Waynesboro Symphonies and with Bill Carrol&apos;s BC Big Rhythm Sound of Lynchburg, VA.",
     },
     {
-        image: { url: "/images/zuzus6.webp", alt: "alt zuzus6 text" },
-        name: "Paul Rosen",
+        url: "/images/headshots/zuzu-paul-laughing-posed.jpg", 
+        alt: "Paul Rosen Head Shot",
+        text: "<strong>Paul Rosen</strong> has a life-long passion for traditional jazz, blues, cajun, and roots music. He is a founding member of Bayou Faux Pas, The Buzzard Rock Bayou Boys, and Floorplay. He plays with Cajun Punk group, Jolie Fille and with Joel Rubin&apos;s UVa Klezmer Ensemble.",
     },
     {
-        image: { url: "/images/zuzus6.webp", alt: "alt zuzus6 text" },
-        name: "Sam Green",
+        url: "/images/headshots/zuzu-sam-head-posed.jpg", 
+        alt: "Sam Green Head Shot",
+        text: "Bassist <strong>Sam Green</strong> is also a member of two powerhouse rock bands: Blue State and Second Opinion. He is also our sound engineer ( <em>Thank you!</em>)",
     },
     {
-        image: { url: "/images/zuzus6.webp", alt: "alt zuzus6 text" },
-        name: "Susanna Rosen",
+        url: "/images/headshots/zuzu-torso-uke.jpg", 
+        alt: "Susanna Rosen Head Shot",
+        text: "<strong>Susanna Rosen</strong> (vocals, ukuleles) has toured with The Alex Caton Band and ACME Swing Mfg. Co. She currently also appears with The Bob Bennetta Trio and Jelly Street Jazz.",
     },
 ];
 

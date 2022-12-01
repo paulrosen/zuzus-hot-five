@@ -334,3 +334,24 @@ a.skiplink-text:active, a.skiplink-text:focus, a.skiplink-text:hover {
 .admin-error:empty {
     display: none;
 }
+
+.bio-list {
+    list-style: none;
+}
+
+.bio-list li {
+    padding-bottom: 30px;
+}
+
+@media screen AND (min-width: 600px) {
+    .bio-list li {
+        display: flex;
+        gap: 20px;
+        padding: 10px;
+    }
+
+    .bio-list li:nth-child(even) {
+        flex-direction: row-reverse;
+        background-color: #F9E07C;
+    }
+}
