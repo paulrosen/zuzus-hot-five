@@ -1,4 +1,4 @@
-import { Container, Grid } from "@mui/material";
+import { Button, Container, Grid } from "@mui/material";
 import { Box } from "@mui/system";
 import React from "react";
 import theme from "../../styles/themes/theme";
@@ -7,6 +7,8 @@ import NativeImage from "../../components/general/NativeImage";
 import { eventsPreviewContent } from "../../siteInfo";
 import DecorativeHeader from "../general/DecorativeHeader";
 import useGetEvents from "../../hooks/useGetEvents";
+import Link from "next/link";
+import { ArrowRightAlt } from "@mui/icons-material";
 
 const EventsPreview = () => {
     const [currentEvents] = useGetEvents("events");
@@ -34,7 +36,7 @@ const EventsPreview = () => {
                     <Grid item xs={12} md={7}>
                         {currentEvents &&
                             currentEvents.length > 0 &&
-                            currentEvents.map((event, index) => {
+                            currentEvents.slice(0,3).map((event, index) => {
                                 return (
                                     <Event
                                         key={index}
@@ -43,6 +45,19 @@ const EventsPreview = () => {
                                     />
                                 );
                             })}
+                    <Link href={"/shows"}>
+                        <Button
+                            size="large"
+                            component="a"
+                            href="/shows"
+                            variant="contained"
+                            color="secondary"
+                            sx={{ width: "fit-content", marginLeft: "30px" }}
+                            endIcon={<ArrowRightAlt />}
+                        >
+                            See All Events
+                        </Button>
+                    </Link>
                     </Grid>
                 </Grid>
             </Container>

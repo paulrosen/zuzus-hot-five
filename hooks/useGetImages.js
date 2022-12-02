@@ -1,22 +1,31 @@
 import { useState, useEffect } from "react";
-import { collection, query, orderBy, getDocs } from "firebase/firestore";
+import { collection, query, orderBy, where, getDocs } from "firebase/firestore";
 import { db } from "../firebase";
 
-function useGetImages(updateCounter, folder) {
+function useGetImages(updateCounter, folder, onlyShown) {
     const [images, setImages] = useState(null);
 
     useEffect(() => {
         async function getImages() {
-            const q = query(
-                //change this based on Firebase file structure
-                collection(db, folder),
-                orderBy("dateUploaded", "desc")
-            );
-
+            let q;
+            if (onlyShown) {
+                q = query(
+                    collection(db, folder),
+                    where("shown", "==", true),
+                    orderBy("order", "asc")
+                );
+            } else {
+                q = query(
+                    collection(db, folder),
+                    orderBy("order", "asc")
+                );
+            }
             const docsSnap = await getDocs(q);
             let newImages = [];
             docsSnap.docs.forEach((doc, index) => {
-                newImages = [...newImages, doc.data()];
+                const d = doc.data()
+                d.id = doc.id
+                newImages = [...newImages, d];
             });
             setImages(newImages);
         }

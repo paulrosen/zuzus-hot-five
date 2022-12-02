@@ -1,26 +1,6 @@
 {
 	"favorites.resources": [
 		{
-			"filePath": "components/admin",
-			"group": "Default"
-		},
-		{
-			"filePath": "utility/login.js",
-			"group": "Default"
-		},
-		{
-			"filePath": "utility/loginEmail.js",
-			"group": "Default"
-		},
-		{
-			"filePath": "utility/signUpEmail.js",
-			"group": "Default"
-		},
-		{
-			"filePath": "pages/susanna/index.js",
-			"group": "Default"
-		},
-		{
 			"filePath": "hooks/useGetEvents.js",
 			"group": "Default"
 		},
@@ -33,7 +13,15 @@
 			"group": "Default"
 		},
 		{
-			"filePath": "firebase.js",
+			"filePath": "components/admin/FirebaseUploadGallery.js",
+			"group": "Default"
+		},
+		{
+			"filePath": "components/admin/FirestoreGalleryListing.js",
+			"group": "Default"
+		},
+		{
+			"filePath": "components/admin/FirestoreGalleryListingItem.js",
 			"group": "Default"
 		}
 	]

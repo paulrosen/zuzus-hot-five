@@ -22,13 +22,13 @@ function useGetEvents(folder) {
                 eventsRef,
                 orderBy("startDate", "asc"),
                 where("startDate", ">=", today),
-                limit(20)
+                limit(50)
             );
             const q2 = query(
                 eventsRef,
-                orderBy("startDate", "asc"),
+                orderBy("startDate", "desc"),
                 where("startDate", "<", today),
-                limit(20)
+                limit(50)
             );
 
             const currentEventsQuery = await getDocs(q1);

@@ -8,7 +8,7 @@ const Gallery = ({ images }) => {
     const router = useRouter();
     const { category, subCategory } = router.query;
     const [firstImage, setFirstImage] = useState(0);
-    const [pageLimit, setPageLimit] = useState(20);
+    const [pageLimit, setPageLimit] = useState(10);
     const handleNextPage = () => {
         setFirstImage(Math.min(firstImage + pageLimit, images.length - 1));
     };
@@ -76,7 +76,7 @@ const Gallery = ({ images }) => {
                                 {column.map((image, index) => {
                                     return (
                                         <Box
-                                            key={index}
+                                            key={image.id}
                                             sx={{ margin: "1rem 0" }}
                                         >
                                             <GalleryImage

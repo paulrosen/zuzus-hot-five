@@ -1,47 +1,56 @@
-import { TextField, Typography } from "@mui/material";
+import { Button, TextField, Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import { addDoc, collection } from "firebase/firestore";
 import React from "react";
 import { useState } from "react";
 import { db } from "../../firebase";
-import ButtonWithConfirm from "../general/ButtonWithConfirm";
 
-const FirebaseUploadForm = ({
+const FirebaseUploadEvent = ({
     config,
+    eventFormData,
+    setEventFormData,
     folder,
     updateCounter,
     setUpdateCounter,
 }) => {
-    const [formData, setFormData] = useState(
-        JSON.parse(JSON.stringify(config))
-    );
     const [isUploading, setIsUploading] = useState(false);
+    const [fileError, setFileError] = useState([]);
 
     const handleFieldChange = (e, field, index) => {
         const newFieldData = {
-            ...formData.fields[index],
+            ...eventFormData.fields[index],
             value: e.target.value,
         };
 
-        let newFormDataFields = formData.fields;
+        let newFormDataFields = eventFormData.fields;
         newFormDataFields[index] = newFieldData;
-        setFormData({ ...formData, fields: newFormDataFields });
+        setEventFormData({ ...eventFormData, fields: newFormDataFields });
     };
 
     const handleUpload = async () => {
-        if (formData.fields[0].value === "") {
-            setFileError("Please Enter a Title");
+        const errors = [];
+        let date = "";
+        eventFormData.fields.forEach(field => {
+            if (field.value === "https://")
+                field.value = ""
+            if (field.required && !field.value)
+                errors.push("Please Enter a " + field.name);
+            if (field.name === "Date")
+                date = field.value
+        })
+        setFileError(errors)
+        if (errors.length > 0) {
+            setIsUploading(false);
             return;
         }
+
         addDoc(collection(db, folder), {
-            ...formData,
+            ...eventFormData,
             dateUploaded: Date.now(),
-            startDate: formData.fields[1].value,
+            startDate: date,
         });
 
-        //check to see if document with selected Title already exists
-
-        setFormData(JSON.parse(JSON.stringify(config)));
+        setEventFormData(JSON.parse(JSON.stringify(config)));
 
         setIsUploading(false);
         setUpdateCounter(updateCounter + 1);
@@ -61,11 +70,11 @@ const FirebaseUploadForm = ({
                 borderRadius: "5px",
             }}
         >
-            <Typography variant="h3" sx={{ color: "black" }}>
-                Upload new item to {folder}.
+            <Typography variant="h2" sx={{ color: "black" }}>
+                Add Event
             </Typography>
 
-            {formData.fields.map((field, index) => {
+            {eventFormData.fields.map((field, index) => {
                 return (
                     <TextField
                         InputLabelProps={{ shrink: true }}
@@ -83,15 +92,18 @@ const FirebaseUploadForm = ({
                 );
             })}
 
-            <ButtonWithConfirm
-                handleClick={handleUpload}
-                isDisabled={isUploading}
-                buttonText="Upload"
-                dialogText="Are you sure you want to upload this item?"
-                notificationText="File Uploading..."
-            />
+            <ul className="admin-error">
+                {fileError.map((error) => {
+                    return (<li key={error}>{error}</li>)})
+                }
+            </ul>
+            <Button
+                variant="contained"
+                onClick={handleUpload}
+                disabled={isUploading}
+            >Upload</Button>
         </Box>
     );
 };
 
-export default FirebaseUploadForm;
+export default FirebaseUploadEvent;

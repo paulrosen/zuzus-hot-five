@@ -21,8 +21,8 @@ const Hero = () => {
             >
                 <div className="hero-title" aria-label="Zuzu's Hot Five">
                     <span className="init">Z</span>
-                    <span className="word">uzu</span>
-                    <span className="init">&#39;s</span>
+                    <span className="word">uzu′</span>
+                    <span className="init">s</span>
                     <span className="sec">Hot 5</span>
                 </div>
             </Box>

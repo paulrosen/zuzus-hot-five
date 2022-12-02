@@ -9,14 +9,20 @@ import NativeImage from "../../components/general/NativeImage";
 import Image from "next/image";
 
 const EventItem = ({ fields, isPreview }) => {
-    const title = fields[0].value;
-    const start = fields[1].value;
-    const end = fields[2].value;
-    const venue = fields[3].value;
-    const time = fields[4].value;
-    const description = fields[5].value;
-    const website = fields[6].value;
-    const facebook = fields[7].value;
+    const fieldObj = {}
+    if (fields) {
+        fields.forEach(field => {
+            fieldObj[field.name.toLowerCase()] = field.value
+        })
+    }
+    const title = fieldObj.title
+    const venue = fieldObj.venue
+    const address = fieldObj.address
+    const date = fieldObj.date ? fieldObj.date : "1970-01-01"
+    const time = fieldObj.time
+    const description = fieldObj.description
+    const website = fieldObj['venue website']
+    const facebook = fieldObj['facebook url']
 
     return (
         <Box
@@ -42,9 +48,8 @@ const EventItem = ({ fields, isPreview }) => {
                     >
                         {title}
                     </Typography>
-                    <Typography>{`${formatHtmlDate(start)}${end && " - "}${
-                        end && formatHtmlDate(end)
-                    }, ${time}`}</Typography>
+                    <Typography>{venue}</Typography>
+                    <Typography><b>{formatHtmlDate(date)}</b> {time}</Typography>
 
                     <br />
                     <Typography>{description}</Typography>
@@ -57,9 +62,10 @@ const EventItem = ({ fields, isPreview }) => {
                         fontWeight: "300",
                     }}
                 >
-                    {venue}
+                    {address}
                 </Typography>
                 <Box sx={{ display: "flex", gap: "1rem" }}>
+                {website ? (
                     <Box
                         sx={{
                             display: "flex",
@@ -69,6 +75,8 @@ const EventItem = ({ fields, isPreview }) => {
                     >
                         <Link href={website}>Venue Website</Link>
                     </Box>
+                     ) : ''}
+                         {facebook ? (
                     <Box
                         sx={{
                             display: "flex",
@@ -76,8 +84,9 @@ const EventItem = ({ fields, isPreview }) => {
                             textDecoration: "underline",
                         }}
                     >
-                        <Link href={facebook}>Facebook Page</Link>
+                       <Link href={facebook}>Facebook Page</Link>
                     </Box>
+                     ) : ''}
                 </Box>
             </Box>
             <Box sx={{ opacity: "70%", margin: "1rem 0" }}>

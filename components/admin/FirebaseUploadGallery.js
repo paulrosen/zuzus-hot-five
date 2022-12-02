@@ -1,15 +1,14 @@
 import { Button, Grid, Input, TextField, Typography } from "@mui/material";
 import { Box } from "@mui/system";
-import { doc, getDoc, setDoc } from "firebase/firestore";
+import { collection, addDoc, doc, getDoc, setDoc } from "firebase/firestore";
 import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
 import Image from "next/image";
 import React from "react";
 import { useRef } from "react";
 import { useState } from "react";
 import { db, storage } from "../../firebase";
-import ButtonWithConfirm from "../general/ButtonWithConfirm";
 
-const FirebaseUploadForm = ({
+const FirebaseUploadGallery = ({
     config,
     folder,
     updateCounter,
@@ -41,7 +40,7 @@ const FirebaseUploadForm = ({
             setFileError("File size must be less than 3MB");
             return;
         }
-        setSelectedImages([...selectedImages, e.target.files[0]]);
+        setSelectedImages([e.target.files[0]]);
         setFileError(false);
         if (e.target.files && e.target.files[0]) {
             var reader = new FileReader();
@@ -67,10 +66,7 @@ const FirebaseUploadForm = ({
     };
 
     const handleRemoveSelectedImage = (index) => {
-        const newSelectedImages = selectedImages.filter(
-            (myPreview, myIndex) => myIndex !== index
-        );
-        setSelectedImages(newSelectedImages);
+        setSelectedImages([]);
     };
 
     const handleUpload = async () => {
@@ -79,101 +75,89 @@ const FirebaseUploadForm = ({
             return;
         }
         if (formData.fields[0].value === "") {
-            setFileError("Please Enter a Title");
+            setFileError("Please Enter alt text");
             return;
         }
         var downloadURLs = [];
         let error = false;
 
         //check to see if image already exists in storage
-        await Promise.all(
-            selectedImages.map(async (image) => {
-                const storageRef = ref(storage, folder);
-                const task = await getDownloadURL(storageRef).then(
-                    (res) => {
-                        //file already exists
-                        console.log("exists");
-                        error = true;
-                    },
-                    (res) => {
-                        //file doesn't exist
-                        console.log("doesn't exist");
-                    }
-                );
-            })
-        );
-        //check to see if document with selected Title already exists
-        const checkTask = await getDoc(
-            doc(db, folder, formData.fields[0].value)
-        );
-        if (checkTask.exists()) {
-            setFileError(
-                "Please select a different title. An image with that title already exists."
-            );
-            return;
-        }
+        // TODO-PER: I don't understand how this did anything before
+        // await Promise.all(
+        //     selectedImages.map(async (image) => {
+        //         const storageRef = ref(storage, folder);
+        //         const task = await getDownloadURL(storageRef).then(
+        //             (res) => {
+        //                 //file already exists
+        //                 console.log("exists");
+        //                 error = true;
+        //             },
+        //             (res) => {
+        //                 //file doesn't exist
+        //                 console.log("doesn't exist");
+        //             }
+        //         );
+        //     })
+        // );
 
         if (error) {
             setFileError(
-                "Cannot upload. One of these files already exists in storage."
+                "Cannot upload. This file already exists in storage."
             );
 
             return;
-        } else {
-            setIsUploading(true);
-            selectedImages.forEach(async (image) => {
-                const storageRef = ref(storage, `${folder}/${image.name}`);
-
-                const uploadTask = uploadBytesResumable(storageRef, image);
-
-                uploadTask.on(
-                    "state_changed",
-                    (snapshot) => {
-                        //to show upload progress as percentage
-                        const progress =
-                            (snapshot.bytesTransferred / snapshot.totalBytes) *
-                            100;
-                        // setUploadProgress(progress);
-                    },
-                    (error) => {
-                        // setUploadError(true);
-                    },
-                    () => {
-                        // creates firestore database entry
-                        // setUploadProgress(0);
-                        getDownloadURL(uploadTask.snapshot.ref).then(
-                            (downloadURL) => {
-                                downloadURLs = [...downloadURLs, downloadURL];
-                                if (
-                                    downloadURLs.length >= selectedImages.length
-                                ) {
-                                    setDoc(
-                                        doc(
-                                            db,
-                                            folder,
-                                            formData.fields[0].value
-                                        ),
-                                        {
-                                            ...formData,
-                                            id: formData.fields[0].value,
-                                            URLs: downloadURLs,
-                                            dateUploaded: Date.now(),
-                                        }
-                                    );
-                                }
-
-                                setFormData(JSON.parse(JSON.stringify(config)));
-                                setPreviews([]);
-                                setSelectedImages([]);
-                                setIsUploading(false);
-                                setUpdateCounter(updateCounter + 1);
-                                setFileError("");
-                            }
-                        );
-                    }
-                );
-            });
         }
+        
+        setIsUploading(true);
+        selectedImages.forEach(async (image) => {
+            const storageRef = ref(storage, `${folder}/${image.name}`);
+
+            const uploadTask = uploadBytesResumable(storageRef, image);
+
+            uploadTask.on(
+                "state_changed",
+                (snapshot) => {
+                    //to show upload progress as percentage
+                    const progress =
+                        (snapshot.bytesTransferred / snapshot.totalBytes) *
+                        100;
+                    // setUploadProgress(progress);
+                },
+                (error) => {
+                    // setUploadError(true);
+                },
+                () => {
+                    // creates firestore database entry
+                    // setUploadProgress(0);
+                    getDownloadURL(uploadTask.snapshot.ref).then(
+                        (downloadURL) => {
+                            downloadURLs = [...downloadURLs, downloadURL];
+                            if (
+                                downloadURLs.length >= selectedImages.length
+                            ) {
+                                const order = parseInt(formData.fields.find(f => f.name === "Order").value, 10)
+                                const shownField = formData.fields.find(f => f.name === "Shown")
+                                const shown = shownField.value === "true" || shownField.value === true
+                                addDoc(collection(db, folder), {
+                                    ...formData,
+                                    dateUploaded: Date.now(),
+                                    URLs: downloadURLs,
+                                    order: order,
+                                    shown: shown,
+                                });
+                           }
+
+                            setFormData(JSON.parse(JSON.stringify(config)));
+                            setPreviews([]);
+                            setSelectedImages([]);
+                            setIsUploading(false);
+                            setUpdateCounter(updateCounter + 1);
+                            setFileError("");
+                        }
+                    );
+                }
+            );
+        });
     };
 
     return (
@@ -190,8 +174,8 @@ const FirebaseUploadForm = ({
                 borderRadius: "5px",
             }}
         >
-            <Typography variant="h3" sx={{ color: "black" }}>
-                Upload new item to {folder}.
+            <Typography variant="h2" sx={{ color: "black" }}>
+                Add to {folder}
             </Typography>
             <Box>
                 <Button
@@ -229,15 +213,13 @@ const FirebaseUploadForm = ({
                                         gap: ".5rem",
                                     }}
                                 >
-                                    <Image
-                                        blurDataURL={preview}
-                                        placeholder="blur"
+                                    <div>
+                                    <img
                                         src={preview}
                                         alt="image preview"
-                                        width="100px"
                                         height="100px"
-                                        layout="responsive"
                                     />
+                                    </div>
                                     <Button
                                         variant="contained"
                                         onClick={() => {
@@ -271,16 +253,14 @@ const FirebaseUploadForm = ({
                 );
             })}
 
-            <ButtonWithConfirm
-                handleClick={handleUpload}
-                isDisabled={isUploading}
-                buttonText="Upload"
-                dialogText="Are you sure you want to upload this item?"
-                notificationText="File Uploading..."
-            />
-            {fileError !== "false" && <Typography>{fileError}</Typography>}
+            <Button
+                variant="contained"
+                onClick={handleUpload}
+                disabled={isUploading}
+            >Upload</Button>
+            {fileError !== "false" && <Typography className="admin-error">{fileError}</Typography>}
         </Box>
     );
 };
 
-export default FirebaseUploadForm;
+export default FirebaseUploadGallery;

@@ -3,30 +3,43 @@ import React, { useState } from "react";
 import useGetEvents from "../../hooks/useGetEvents";
 import FirestoreEventsListingItem from "./FirestoreEventsListingItem";
 
-const FirestoreListing = ({ folder, updateCounter, setUpdateCounter }) => {
+const FirestoreEventsListing = ({ folder, setEventFormData, updateCounter, setUpdateCounter }) => {
     const [currentEvents, pastEvents] = useGetEvents(updateCounter, "events");
     const [shownEvents, setShownEvents] = useState([]);
+    const [currentSearch, setCurrentSearch] = useState("");
 
     const handleSearchChange = (e) => {
+        const eventFilter = (event) => {
+            const fields = event.data().fields;
+            let field = fields.find(f => f.name === "Title")
+            if (field && field.value.toLowerCase().includes(e.target.value.toLowerCase()))
+                return true
+            field = fields.find(f => f.name === "Venue")
+            if (field && field.value.toLowerCase().includes(e.target.value.toLowerCase()))
+                return true
+            field = fields.find(f => f.name === "Description")
+            if (field && field.value.toLowerCase().includes(e.target.value.toLowerCase()))
+                return true
+            return false;
+        }
+        setCurrentSearch(e.target.value)
         if (e.target.value === "") {
-            setShownEvents([]);
+            setShownEvents(currentEvents);
             return;
         }
         let newShownCurrentEvents = currentEvents.filter((event) =>
-            event
-                .data()
-                .fields[0].value.toLowerCase()
-                .includes(e.target.value.toLowerCase())
+            eventFilter(event)
         );
         let newShownPastEvents = pastEvents.filter((event) =>
-            event
-                .data()
-                .fields[0].value.toLowerCase()
-                .includes(e.target.value.toLowerCase())
+            eventFilter(event)
         );
         let newShownEvents = newShownCurrentEvents.concat(newShownPastEvents);
         setShownEvents(newShownEvents);
     };
+    setTimeout(() => {
+        if (!currentSearch && shownEvents && shownEvents.length === 0)
+            handleSearchChange({target: { value: ""}})
+    }, 500)
 
     return (
         <Box
@@ -37,11 +50,11 @@ const FirestoreListing = ({ folder, updateCounter, setUpdateCounter }) => {
                 height: "100%",
             }}
         >
-            <Typography variant="h3" sx={{ color: "black" }}>
-                Update or delete item in {folder}.
+            <Typography variant="h2" sx={{ color: "black" }}>
+                Update Event
             </Typography>
             <Box sx={{ display: "flex", alignItems: "end", gap: ".5em" }}>
-                <Typography>Search by image title:</Typography>
+                <Typography>Search for event:</Typography>
                 <Input
                     color="secondary"
                     type="text"
@@ -55,8 +68,9 @@ const FirestoreListing = ({ folder, updateCounter, setUpdateCounter }) => {
                     return (
                         <FirestoreEventsListingItem
                             folder={folder}
-                            key={index}
+                            key={event.id}
                             event={event}
+                            setEventFormData={setEventFormData}
                             updateCounter={updateCounter}
                             setUpdateCounter={setUpdateCounter}
                             setShownEvents={setShownEvents}
@@ -70,4 +84,4 @@ const FirestoreListing = ({ folder, updateCounter, setUpdateCounter }) => {
     );
 };
 
-export default FirestoreListing;
+export default FirestoreEventsListing;

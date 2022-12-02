@@ -305,3 +305,62 @@ a.skiplink-text:active, a.skiplink-text:focus, a.skiplink-text:hover {
     }
 
 }
+
+.thanks-message {
+    border: 1px solid #C1C1BA;
+    height: 400px;
+    padding: 20px;
+}
+
+.admin-tab-container {
+    border-bottom: 2px solid #ADD8E6;
+    margin-bottom: 60px;
+    width: calc(100vw - 80px);
+}
+.admin-tab {
+    padding: 0 24px 8px 24px;
+    margin-right: 10px;
+}
+
+.admin-page h2 {
+    font-family: Roboto, Helvetica, Arial, sans-serif;
+    font-size: 40px;
+    font-weight: bold;
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+
+.admin-error {
+    color: red;
+}
+.admin-error:empty {
+    display: none;
+}
+
+.bio-list {
+    list-style: none;
+}
+
+.bio-list li {
+    padding-bottom: 30px;
+}
+
+@media screen AND (min-width: 600px) {
+    .bio-list li {
+        display: flex;
+        gap: 20px;
+        padding: 10px;
+    }
+
+    .bio-list li:nth-child(odd) {
+        flex-direction: row-reverse;
+    }
+
+    .bio-list li:nth-child(even) {
+        background-color: #F9E07C;
+    }
+}

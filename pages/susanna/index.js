@@ -4,14 +4,14 @@ import { useState } from "react";
 import login from "../../utility/login.js";
 import { doc, getDoc } from "firebase/firestore";
 import { db } from "../../firebase.js";
-import FirebaseUploadForm from "../../components/admin/FirebaseUploadForm.js";
+import FirebaseUploadGallery from "../../components/admin/FirebaseUploadGallery.js";
 import FirebaseUploadEvent from "../../components/admin/FirebaseUploadEvent.js";
-import FirestoreListing from "../../components/admin/FirestoreListing.js";
+import FirestoreGalleryListing from "../../components/admin/FirestoreGalleryListing.js";
 import FirestoreEventsListing from "../../components/admin/FirestoreEventsListing.js";
 import { eventConfig, galleryConfig } from "../../siteInfo";
-import PageLayout from "../../components/layout/PageLayout.js";
 import signUpEmail from "../../utility/signUpEmail.js";
 import loginEmail from "../../utility/loginEmail.js";
+import Meta from "../../components/home/Meta";
 
 const Admin = () => {
     const [isAdmin, setIsAdmin] = useState(false);
@@ -20,6 +20,10 @@ const Admin = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [loginError, setLoginError] = useState(null);
+    const [isGallery, setIsGallery] = useState(false);
+    const [eventFormData, setEventFormData] = useState(
+        JSON.parse(JSON.stringify(eventConfig))
+    );
 
     const handleSignIn = async () => {
         const user = await login();
@@ -55,41 +59,37 @@ const Admin = () => {
     const handleEmailChange = (e) => {
         setEmail(e.target.value);
     };
+    const handleTabChange = (e) => {
+        setIsGallery(e.target.value === "gallery");
+    };
     const handlePasswordChange = (e) => {
         setPassword(e.target.value);
     };
 
     return (
-        <PageLayout name="Admin">
-            <Container maxWidth="xl">
-                <Box sx={{ padding: "4rem 0" }}>
+            <Container maxWidth="xl" className="admin-page">
+                     <Meta />
+                <br/>
+                <br/>
+                <br/>
+                <Box>
                     {!isLoggedIn && (
                         <Container maxWidth="sm">
-                            <Box
-                                sx={{
-                                    display: "flex",
-                                    flexDirection: "column",
-                                    gap: "1em",
-                                }}
-                            >
-                                {/* <Button
-                                    variant="contained"
-                                    color="secondary"
-                                    onClick={handleSignIn}
-                                    sx={{ marginBottom: "1rem" }}
-                                >
-                                    Sign in with google
-                                </Button> */}
+                            <form className="login-form">
                                 <TextField
+                                    InputLabelProps={{ shrink: true }}
                                     label="email"
+                                    autoComplete="username"
                                     focused
                                     color="secondary"
                                     value={email}
                                     onChange={handleEmailChange}
                                 />
                                 <TextField
+                                    InputLabelProps={{ shrink: true }}
                                     type="password"
                                     label="password"
+                                    autoComplete="current-password"
                                     focused
                                     color="secondary"
                                     value={password}
@@ -101,76 +101,100 @@ const Admin = () => {
                                     </Typography>
                                 )}
                                 <Box sx={{ display: "flex", gap: "1em" }}>
-                                    <Button
+                                    {/* <Button
                                         variant="contained"
                                         color="secondary"
                                         onClick={handleSignUpEmail}
                                         sx={{ marginBottom: "1rem" }}
                                     >
                                         Sign up
-                                    </Button>
+                                    </Button> */}
                                     <Button
                                         variant="contained"
                                         color="secondary"
                                         onClick={handleLoginEmail}
                                         sx={{ marginBottom: "1rem" }}
                                     >
-                                        Log in with email
+                                        Log in
                                     </Button>
                                 </Box>
-                            </Box>
+                            </form>
                         </Container>
                     )}
                     {isAdmin ? (
                         <Box sx={{ marginBottom: "3rem" }}>
                             <Grid container spacing={8}>
                                 <Grid item xs={12} md={6}>
-                                    <FirebaseUploadForm
-                                        config={galleryConfig}
-                                        folder="gallery"
-                                        updateCounter={updateCounter}
-                                        setUpdateCounter={setUpdateCounter}
-                                    />
-                                </Grid>
-                                <Grid item xs={12} md={6}>
-                                    <FirestoreListing
-                                        // category={galleryConfig.category}
-                                        folder="gallery"
-                                        updateCounter={updateCounter}
-                                        setUpdateCounter={setUpdateCounter}
-                                    />
-                                </Grid>
-                                <Grid item xs={12} md={6}>
-                                    <FirebaseUploadEvent
-                                        config={eventConfig}
-                                        folder="events"
-                                        updateCounter={updateCounter}
-                                        setUpdateCounter={setUpdateCounter}
-                                    />
-                                </Grid>
-                                <Grid item xs={12} md={6}>
-                                    <FirestoreEventsListing
-                                        // category={galleryConfig.category}
-                                        config={eventConfig}
-                                        folder="events"
-                                        updateCounter={updateCounter}
-                                        setUpdateCounter={setUpdateCounter}
-                                    />
+                                    <div className="admin-tab-container">
+                                    <label className="admin-tab">
+                                        <input type="radio" 
+                                            name="adminTab"  
+                                            onClick={handleTabChange}
+                                            defaultChecked
+                                            value="event"/>Events
+                                    </label>
+                                    <label className="admin-tab">
+                                        <input type="radio" 
+                                            name="adminTab"
+                                            onClick={handleTabChange}
+                                            value="gallery"/>Gallery
+                                    </label>
+                                    </div>
                                 </Grid>
                             </Grid>
+                            {isGallery ? (
+                                <Grid container spacing={8}>
+                                    <Grid item xs={12} md={6}>
+                                        <FirebaseUploadGallery
+                                            config={galleryConfig}
+                                            folder="gallery"
+                                            updateCounter={updateCounter}
+                                            setUpdateCounter={setUpdateCounter}
+                                        />
+                                    </Grid>
+                                    <Grid item xs={12} md={6}>
+                                        <FirestoreGalleryListing
+                                            // category={galleryConfig.category}
+                                            folder="gallery"
+                                            updateCounter={updateCounter}
+                                            setUpdateCounter={setUpdateCounter}
+                                        />
+                                    </Grid>
+                                </Grid>
+                            ) : (
+                                <Grid container spacing={8}>
+                                    <Grid item xs={12} md={6}>
+                                        <FirebaseUploadEvent
+                                            config={eventConfig}
+                                            eventFormData={eventFormData}
+                                            setEventFormData={setEventFormData}
+                                            folder="events"
+                                            updateCounter={updateCounter}
+                                            setUpdateCounter={setUpdateCounter}
+                                        />
+                                    </Grid>
+                                    <Grid item xs={12} md={6}>
+                                        <FirestoreEventsListing
+                                            // category={galleryConfig.category}
+                                            config={eventConfig}
+                                            setEventFormData={setEventFormData}
+                                            folder="events"
+                                            updateCounter={updateCounter}
+                                            setUpdateCounter={setUpdateCounter}
+                                        />
+                                    </Grid>
+                                </Grid>
+                            )}
                         </Box>
                     ) : (
                         <Container maxWidth="sm">
                             <Typography>
-                                You are not logged in as an administrator.
-                                Please contact Dave at hello@fictionalweb.com if
-                                you continue to experience difficulties.
+                                You are not logged in.
                             </Typography>
                         </Container>
                     )}
                 </Box>
             </Container>
-        </PageLayout>
     );
 };
 

@@ -1,16 +1,18 @@
 import { Box, Input, Typography } from "@mui/material";
 import React, { useState } from "react";
 import useGetImages from "../../hooks/useGetImages";
-import FirestoreListingItem from "./FirestoreListingItem";
+import FirestoreListingItem from "./FirestoreGalleryListingItem";
 
-const FirestoreListing = ({ folder, updateCounter, setUpdateCounter }) => {
+const FirestoreGalleryListing = ({ folder, updateCounter, setUpdateCounter }) => {
     const [images] = useGetImages(updateCounter, folder);
     const [shownImages, setShownImages] = useState([]);
+    const [currentSearch, setCurrentSearch] = useState("");
 
     const handleSearchChange = (e) => {
+        setCurrentSearch(e.target.value)
         if (e.target.value === "") {
-            setShownImages([]);
-            return;
+            setShownImages(images);
+        return;
         }
         let newShownImages = images.filter((image) =>
             image.fields[0].value
@@ -19,6 +21,11 @@ const FirestoreListing = ({ folder, updateCounter, setUpdateCounter }) => {
         );
         setShownImages(newShownImages);
     };
+
+    setTimeout(() => {
+        if (!currentSearch && shownImages && shownImages.length === 0)
+            handleSearchChange({target: { value: ""}})
+    }, 500)
 
     return (
         <Box
@@ -29,11 +36,11 @@ const FirestoreListing = ({ folder, updateCounter, setUpdateCounter }) => {
                 height: "100%",
             }}
         >
-            <Typography variant="h3" sx={{ color: "black" }}>
-                Update or delete item in {folder}.
+            <Typography variant="h2" sx={{ color: "black" }}>
+                Update item in {folder}
             </Typography>
             <Box sx={{ display: "flex", alignItems: "end", gap: ".5em" }}>
-                <Typography>Search by image title:</Typography>
+                <Typography>Search by alt text:</Typography>
                 <Input
                     color="secondary"
                     type="text"
@@ -47,7 +54,7 @@ const FirestoreListing = ({ folder, updateCounter, setUpdateCounter }) => {
                     return (
                         <FirestoreListingItem
                             folder={folder}
-                            key={index}
+                            key={image.id}
                             image={image}
                             updateCounter={updateCounter}
                             setUpdateCounter={setUpdateCounter}
@@ -62,4 +69,4 @@ const FirestoreListing = ({ folder, updateCounter, setUpdateCounter }) => {
     );
 };
 
-export default FirestoreListing;
+export default FirestoreGalleryListing;

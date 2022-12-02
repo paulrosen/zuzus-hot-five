@@ -1,4 +1,4 @@
-import { Box, IconButton, TextField, Typography } from "@mui/material";
+import { Button, Box, IconButton, TextField, Typography } from "@mui/material";
 import ExpandLessIcon from "@mui/icons-material/ExpandLess";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { deleteObject, ref } from "firebase/storage";
@@ -7,10 +7,12 @@ import { deleteDoc, doc, setDoc } from "firebase/firestore";
 import { useState } from "react";
 import ButtonWithConfirm from "../general/ButtonWithConfirm";
 import theme from "../../styles/themes/theme";
+import { formatHtmlDate } from "../../utility/general";
 
 const FirestoreListingItem = ({
     folder,
     event,
+    setEventFormData,
     updateCounter,
     setUpdateCounter,
     setShownEvents,
@@ -39,12 +41,15 @@ const FirestoreListingItem = ({
 
     const handleUpdate = async () => {
         setIsUpdating(true);
-        console.log(event.data());
         const docRef = doc(db, folder, event.id);
         await setDoc(docRef, formData).then(() => {
             setIsExpanded(false);
             setIsUpdating(false);
         });
+    };
+
+    const handleDuplicate = () => {
+        setEventFormData(event.data())
     };
 
     const handleFieldChange = (e, field, index) => {
@@ -54,7 +59,23 @@ const FirestoreListingItem = ({
         };
         let newFormDataFields = formData.fields;
         newFormDataFields[index] = newFieldData;
-        setFormData({ ...formData, fields: newFormDataFields });
+
+        let newStartDate = formData.startDate;
+        if (formData.fields[index].name === "Date") {
+            newStartDate = e.target.value;
+        }
+        setFormData({
+            ...formData,
+            fields: newFormDataFields,
+            startDate: newStartDate,
+        });
+    };
+
+    const getFieldValue = (name) => {
+        const field = event.data().fields.find(f => f.name === name)
+        if (field)
+            return field.value
+        return "";    
     };
 
     return (
@@ -71,7 +92,10 @@ const FirestoreListingItem = ({
                     }}
                     onClick={handleExpand}
                 >
-                    <Typography>{event.data().fields[0].value}</Typography>
+                    <div>
+                    <Typography>{event.data().fields[0].value} <b>{formatHtmlDate(getFieldValue("Date"))}</b></Typography>
+                    <Typography>{getFieldValue("Venue")}</Typography>
+                    </div>
                     <ExpandMoreIcon />
                 </Box>
             ) : (
@@ -89,6 +113,7 @@ const FirestoreListingItem = ({
                         formData.fields.map((field, index) => {
                             return (
                                 <TextField
+                                    InputLabelProps={{ shrink: true }}
                                     fullWidth
                                     type={field.type}
                                     color="secondary"
@@ -118,13 +143,11 @@ const FirestoreListingItem = ({
                         }}
                     >
                         <Box sx={{ display: "flex", gap: "1em" }}>
-                            <ButtonWithConfirm
-                                handleClick={handleUpdate}
-                                isDisabled={isUpdating}
-                                dialogText="Are you sure you want to update this item?"
-                                buttonText="update"
-                                notificationText="Item Updated!"
-                            />
+                            <Button
+                                variant="contained"
+                                onClick={handleUpdate}
+                                disabled={isUpdating}
+                            >Update</Button>
                             <ButtonWithConfirm
                                 handleClick={handleDelete}
                                 dialogText="Are you sure you want to delete this item permanently?"
@@ -132,6 +155,10 @@ const FirestoreListingItem = ({
                                 notificationText="Item Deleted!"
                                 isDisabled={isUpdating}
                             />
+                            <Button
+                                variant="contained"
+                                onClick={handleDuplicate}
+                            >Duplicate</Button>
                         </Box>
                         <IconButton
                             variant="contained"

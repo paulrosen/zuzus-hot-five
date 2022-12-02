@@ -8,6 +8,7 @@ const GalleryImage = ({ image, category, subCategory }) => {
 
     return (
         <Box sx={{ position: "relative" }}>
+            <figure>
             <Image
                 src={image.URLs[0]}
                 blurDataURL={image}
@@ -20,9 +21,13 @@ const GalleryImage = ({ image, category, subCategory }) => {
                     setRatio(naturalWidth / naturalHeight)
                 }
                 layout="responsive"
-                alt={image.description}
+                alt={image.fields[0].value}
             />
+            <figcaption>{image.fields[1] && image.fields[1].value ? `Photo by ${image.fields[1].value}` : ''}</figcaption>
+            </figure>
             <Box
+                component="a"
+                href={image.URLs[0]}
                 sx={{
                     padding: "1em",
                     display: "flex",
@@ -41,9 +46,7 @@ const GalleryImage = ({ image, category, subCategory }) => {
                     },
                 }}
             >
-                <a href={image.URLs[0]} download="test">
-                    <ArrowForward sx={{ color: "white", fontSize: "40px" }} />
-                </a>
+                <ArrowForward sx={{ color: "white", fontSize: "40px" }} />
             </Box>
         </Box>
     );
