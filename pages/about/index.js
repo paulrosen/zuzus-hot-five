@@ -22,9 +22,6 @@ const index = () => {
                             width="100%"
                             image={aboutContent.image}
                         />
-                        <Typography variant="caption">
-                            {aboutContent.image.alt}
-                        </Typography>
                     </Box>
                 </Grid>
 
