@@ -356,8 +356,11 @@ a.skiplink-text:active, a.skiplink-text:focus, a.skiplink-text:hover {
         padding: 10px;
     }
 
-    .bio-list li:nth-child(even) {
+    .bio-list li:nth-child(odd) {
         flex-direction: row-reverse;
+    }
+
+    .bio-list li:nth-child(even) {
         background-color: #F9E07C;
     }
 }
