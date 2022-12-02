@@ -31,7 +31,7 @@ const navbar = {
 
 const heroContent = {
     image: {
-        url: "/images/zuzus5.webp",
+        url: "/images/hero-background.webp",
         alt: "zuzu's hot five",
     },
 };
