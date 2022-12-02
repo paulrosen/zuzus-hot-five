@@ -146,14 +146,14 @@ const aboutContent = {
 
 const secondaryProfiles = [
     {
-        url: "/images/headshots/zuzu-brandon-head.jpg", 
-        alt: "Brandon Rose Head Shot",
-        text: "<strong>Brandon Rose</strong> has provided his excellent trumpet and cornet skills for Baaba Seth, Conjunto Sason, The UVA Jazz Ensemble, The Crozet Symphony, and Mami Gato. He also plays with The Queen City Porch Swingers.",
-    },
-    {
         url: "/images/headshots/zuzu-aaron-clarinet-posed.jpg", 
         alt: "Aaron Olwell Head Shot",
         text: "For over 20 years, string and wind instrumentalist <strong>Aaron Olwell</strong> has been steeped in Irish and Appalachian traditional music, but recently discovered the thrills of trad-jazz and the clarinet. He works with his father making 19th c. style wood flutes for musicians around the world. Aaron also tours with The Big Dixie Swingers from New Orleans, and was a founding member of Boxcar Speakeasy.",
+    },
+    {
+        url: "/images/headshots/zuzu-brandon-head.jpg", 
+        alt: "Brandon Rose Head Shot",
+        text: "<strong>Brandon Rose</strong> has provided his excellent trumpet and cornet skills for Baaba Seth, Conjunto Sason, The UVA Jazz Ensemble, The Crozet Symphony, and Mami Gato. He also plays with The Queen City Porch Swingers.",
     },
     {
         url: "/images/headshots/zuzu-pete-head.jpg", 
