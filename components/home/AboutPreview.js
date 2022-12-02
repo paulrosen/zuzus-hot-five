@@ -5,10 +5,12 @@ import Link from "next/link";
 import NativeImage from "../../components/general/NativeImage";
 import { aboutContent, eventsPreviewContent } from "../../siteInfo";
 import DecorativeHeader from "../general/DecorativeHeader";
+import theme from "../../styles/themes/theme";
 
 const AboutPreview = () => {
     return (
-        <Box className="section">
+        <Box className="section" sx={{ backgroundColor: theme.palette.background.accent }}
+        >
             <Container maxWidth="lg">
                 <Box sx={{ marginBottom: "4rem" }}>
                     <DecorativeHeader
@@ -56,7 +58,8 @@ const AboutPreview = () => {
                                         href="/about"
                                         variant="contained"
                                         endIcon={<ArrowRightAlt />}
-                                    >
+                                        color="secondary"
+                                        >
                                         More About Us
                                     </Button>
                                 </Link>

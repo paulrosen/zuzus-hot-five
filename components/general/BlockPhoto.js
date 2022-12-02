@@ -1,7 +1,6 @@
 import { Box, Button, Grid, Typography } from "@mui/material";
 import { Container } from "@mui/system";
 import Link from "next/link";
-import theme from "../../styles/themes/theme";
 import NativeImage from "./NativeImage";
 
 const BlockPhoto = ({ blockPhotoContent, reverse }) => {
@@ -9,7 +8,6 @@ const BlockPhoto = ({ blockPhotoContent, reverse }) => {
         <Grid
             container
             wrap={reverse ? "wrap-reverse" : "wrap"}
-            sx={{ backgroundColor: theme.palette.background.accent }}
         >
             <Grid item xs={12} md={6} order={reverse ? 1 : 0}>
                 <NativeImage image={blockPhotoContent.image} maxSize={2000} />
@@ -43,7 +41,6 @@ const BlockPhoto = ({ blockPhotoContent, reverse }) => {
                                     href={blockPhotoContent.button.href}
                                     variant={blockPhotoContent.button.variant}
                                     size="large"
-                                    color="secondary"
                                 >
                                     {blockPhotoContent.button.text}
                                 </Button>

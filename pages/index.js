@@ -25,9 +25,11 @@ export default function Home() {
                 <EventsPreview />
                 </section>
                 <section>
+                <BlockPhoto blockPhotoContent={blockPhotoContentOne} />
+                </section>
+                <section>
                 <AboutPreview />
                 </section>
-                <BlockPhoto blockPhotoContent={blockPhotoContentOne} />
             </Container>
         </Box>
         </main>
