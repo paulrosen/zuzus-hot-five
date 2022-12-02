@@ -67,41 +67,41 @@ const Admin = () => {
     };
 
     return (
-            <Container maxWidth="xl" className="admin-page">
-                     <Meta />
-                <br/>
-                <br/>
-                <br/>
-                <Box>
-                    {!isLoggedIn && (
-                        <Container maxWidth="sm">
-                            <form className="login-form">
-                                <TextField
-                                    InputLabelProps={{ shrink: true }}
-                                    label="email"
-                                    autoComplete="username"
-                                    focused
-                                    color="secondary"
-                                    value={email}
-                                    onChange={handleEmailChange}
-                                />
-                                <TextField
-                                    InputLabelProps={{ shrink: true }}
-                                    type="password"
-                                    label="password"
-                                    autoComplete="current-password"
-                                    focused
-                                    color="secondary"
-                                    value={password}
-                                    onChange={handlePasswordChange}
-                                />
-                                {loginError && (
-                                    <Typography variant="caption">
-                                        {loginError}
-                                    </Typography>
-                                )}
-                                <Box sx={{ display: "flex", gap: "1em" }}>
-                                    {/* <Button
+        <Container maxWidth="xl" className="admin-page">
+            <Meta />
+            <br />
+            <br />
+            <br />
+            <Box>
+                {!isLoggedIn && (
+                    <Container maxWidth="sm">
+                        <form className="login-form">
+                            <TextField
+                                InputLabelProps={{ shrink: true }}
+                                label="email"
+                                autoComplete="username"
+                                focused
+                                color="secondary"
+                                value={email}
+                                onChange={handleEmailChange}
+                            />
+                            <TextField
+                                InputLabelProps={{ shrink: true }}
+                                type="password"
+                                label="password"
+                                autoComplete="current-password"
+                                focused
+                                color="secondary"
+                                value={password}
+                                onChange={handlePasswordChange}
+                            />
+                            {loginError && (
+                                <Typography variant="caption">
+                                    {loginError}
+                                </Typography>
+                            )}
+                            <Box sx={{ display: "flex", gap: "1em" }}>
+                                {/* <Button
                                         variant="contained"
                                         color="secondary"
                                         onClick={handleSignUpEmail}
@@ -109,92 +109,96 @@ const Admin = () => {
                                     >
                                         Sign up
                                     </Button> */}
-                                    <Button
-                                        variant="contained"
-                                        color="secondary"
-                                        onClick={handleLoginEmail}
-                                        sx={{ marginBottom: "1rem" }}
-                                    >
-                                        Log in
-                                    </Button>
-                                </Box>
-                            </form>
-                        </Container>
-                    )}
-                    {isAdmin ? (
-                        <Box sx={{ marginBottom: "3rem" }}>
-                            <Grid container spacing={8}>
-                                <Grid item xs={12} md={6}>
-                                    <div className="admin-tab-container">
+                                <Button
+                                    variant="contained"
+                                    color="secondary"
+                                    onClick={handleLoginEmail}
+                                    sx={{ marginBottom: "1rem" }}
+                                >
+                                    Log in
+                                </Button>
+                            </Box>
+                        </form>
+                    </Container>
+                )}
+                {!isAdmin ? (
+                    <Box sx={{ marginBottom: "3rem" }}>
+                        <Grid container spacing={8}>
+                            <Grid item xs={12} md={6}>
+                                <div className="admin-tab-container">
                                     <label className="admin-tab">
-                                        <input type="radio" 
-                                            name="adminTab"  
-                                            onClick={handleTabChange}
-                                            defaultChecked
-                                            value="event"/>Events
-                                    </label>
-                                    <label className="admin-tab">
-                                        <input type="radio" 
+                                        <input
+                                            type="radio"
                                             name="adminTab"
                                             onClick={handleTabChange}
-                                            value="gallery"/>Gallery
+                                            defaultChecked
+                                            value="event"
+                                        />
+                                        Events
                                     </label>
-                                    </div>
+                                    <label className="admin-tab">
+                                        <input
+                                            type="radio"
+                                            name="adminTab"
+                                            onClick={handleTabChange}
+                                            value="gallery"
+                                        />
+                                        Gallery
+                                    </label>
+                                </div>
+                            </Grid>
+                        </Grid>
+                        {isGallery ? (
+                            <Grid container spacing={8}>
+                                <Grid item xs={12} md={6}>
+                                    <FirebaseUploadGallery
+                                        config={galleryConfig}
+                                        folder="gallery"
+                                        updateCounter={updateCounter}
+                                        setUpdateCounter={setUpdateCounter}
+                                    />
+                                </Grid>
+                                <Grid item xs={12} md={6}>
+                                    <FirestoreGalleryListing
+                                        // category={galleryConfig.category}
+                                        folder="gallery"
+                                        updateCounter={updateCounter}
+                                        setUpdateCounter={setUpdateCounter}
+                                    />
                                 </Grid>
                             </Grid>
-                            {isGallery ? (
-                                <Grid container spacing={8}>
-                                    <Grid item xs={12} md={6}>
-                                        <FirebaseUploadGallery
-                                            config={galleryConfig}
-                                            folder="gallery"
-                                            updateCounter={updateCounter}
-                                            setUpdateCounter={setUpdateCounter}
-                                        />
-                                    </Grid>
-                                    <Grid item xs={12} md={6}>
-                                        <FirestoreGalleryListing
-                                            // category={galleryConfig.category}
-                                            folder="gallery"
-                                            updateCounter={updateCounter}
-                                            setUpdateCounter={setUpdateCounter}
-                                        />
-                                    </Grid>
+                        ) : (
+                            <Grid container spacing={8}>
+                                <Grid item xs={12} md={6}>
+                                    <FirebaseUploadEvent
+                                        config={eventConfig}
+                                        eventFormData={eventFormData}
+                                        setEventFormData={setEventFormData}
+                                        folder="events"
+                                        updateCounter={updateCounter}
+                                        setUpdateCounter={setUpdateCounter}
+                                    />
                                 </Grid>
-                            ) : (
-                                <Grid container spacing={8}>
-                                    <Grid item xs={12} md={6}>
-                                        <FirebaseUploadEvent
-                                            config={eventConfig}
-                                            eventFormData={eventFormData}
-                                            setEventFormData={setEventFormData}
-                                            folder="events"
-                                            updateCounter={updateCounter}
-                                            setUpdateCounter={setUpdateCounter}
-                                        />
-                                    </Grid>
-                                    <Grid item xs={12} md={6}>
-                                        <FirestoreEventsListing
-                                            // category={galleryConfig.category}
-                                            config={eventConfig}
-                                            setEventFormData={setEventFormData}
-                                            folder="events"
-                                            updateCounter={updateCounter}
-                                            setUpdateCounter={setUpdateCounter}
-                                        />
-                                    </Grid>
+                                <Grid item xs={12} md={6}>
+                                    <FirestoreEventsListing
+                                        // category={galleryConfig.category}
+                                        config={eventConfig}
+                                        setEventFormData={setEventFormData}
+                                        folder="events"
+                                        updateCounter={updateCounter}
+                                        setUpdateCounter={setUpdateCounter}
+                                    />
                                 </Grid>
-                            )}
-                        </Box>
-                    ) : (
-                        <Container maxWidth="sm">
-                            <Typography>
-                                You are not logged in.
-                            </Typography>
-                        </Container>
-                    )}
-                </Box>
-            </Container>
+                            </Grid>
+                        )}
+                    </Box>
+                ) : (
+                    <Container maxWidth="sm">
+                        <Typography>You are not logged in.</Typography>
+                    </Container>
+                )}
+            </Box>
+        </Container>
     );
 };
 

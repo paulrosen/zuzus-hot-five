@@ -1,4 +1,12 @@
-import { Button, Grid, Input, TextField, Typography } from "@mui/material";
+import {
+    Button,
+    Checkbox,
+    FormControlLabel,
+    Grid,
+    Input,
+    TextField,
+    Typography,
+} from "@mui/material";
 import { Box } from "@mui/system";
 import { collection, addDoc, doc, getDoc, setDoc } from "firebase/firestore";
 import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
@@ -24,10 +32,18 @@ const FirebaseUploadGallery = ({
     const fileInputRef = useRef();
 
     const handleFieldChange = (e, field, index) => {
-        const newFieldData = {
-            ...formData.fields[index],
-            value: e.target.value,
-        };
+        let newFieldData;
+        if (formData.fields[index].type === "checkbox") {
+            newFieldData = {
+                ...formData.fields[index],
+                value: e.target.checked,
+            };
+        } else {
+            newFieldData = {
+                ...formData.fields[index],
+                value: e.target.value,
+            };
+        }
 
         let newFormDataFields = formData.fields;
         newFormDataFields[index] = newFieldData;
@@ -49,7 +65,7 @@ const FirebaseUploadGallery = ({
                 if (previews.includes(e.target.result)) {
                     setFileError("Please select another file");
                 } else {
-                    setPreviews([...previews, e.target.result]);
+                    setPreviews([e.target.result]);
                 }
             };
 
@@ -101,63 +117,63 @@ const FirebaseUploadGallery = ({
         // );
 
         if (error) {
-            setFileError(
-                "Cannot upload. This file already exists in storage."
-            );
+            setFileError("Cannot upload. This file already exists in storage.");
 
             return;
         }
-        
+
         setIsUploading(true);
-        selectedImages.forEach(async (image) => {
-            const storageRef = ref(storage, `${folder}/${image.name}`);
+        const image = selectedImages[0];
+        const storageRef = ref(storage, `${folder}/${image.name}`);
 
-            const uploadTask = uploadBytesResumable(storageRef, image);
+        const uploadTask = uploadBytesResumable(storageRef, image);
 
-            uploadTask.on(
-                "state_changed",
-                (snapshot) => {
-                    //to show upload progress as percentage
-                    const progress =
-                        (snapshot.bytesTransferred / snapshot.totalBytes) *
-                        100;
-                    // setUploadProgress(progress);
-                },
-                (error) => {
-                    // setUploadError(true);
-                },
-                () => {
-                    // creates firestore database entry
-                    // setUploadProgress(0);
-                    getDownloadURL(uploadTask.snapshot.ref).then(
-                        (downloadURL) => {
-                            downloadURLs = [...downloadURLs, downloadURL];
-                            if (
-                                downloadURLs.length >= selectedImages.length
-                            ) {
-                                const order = parseInt(formData.fields.find(f => f.name === "Order").value, 10)
-                                const shownField = formData.fields.find(f => f.name === "Shown")
-                                const shown = shownField.value === "true" || shownField.value === true
-                                addDoc(collection(db, folder), {
-                                    ...formData,
-                                    dateUploaded: Date.now(),
-                                    URLs: downloadURLs,
-                                    order: order,
-                                    shown: shown,
-                                });
-                           }
+        uploadTask.on(
+            "state_changed",
+            (snapshot) => {
+                //to show upload progress as percentage
+                const progress =
+                    (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+                // setUploadProgress(progress);
+            },
+            (error) => {
+                // setUploadError(true);
+            },
+            () => {
+                // creates firestore database entry
+                // setUploadProgress(0);
+                getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+                    downloadURLs = [...downloadURLs, downloadURL];
+                    if (downloadURLs.length >= selectedImages.length) {
+                        const order = parseInt(
+                            formData.fields.find((f) => f.name === "Order")
+                                .value,
+                            10
+                        );
+                        const shownField = formData.fields.find(
+                            (f) => f.name === "Shown"
+                        );
+                        const shown =
+                            shownField.value === "true" ||
+                            shownField.value === true;
+                        addDoc(collection(db, folder), {
+                            ...formData,
+                            dateUploaded: Date.now(),
+                            URLs: downloadURLs,
+                            order: order,
+                            shown: shown,
+                        });
+                    }
 
-                            setFormData(JSON.parse(JSON.stringify(config)));
-                            setPreviews([]);
-                            setSelectedImages([]);
-                            setIsUploading(false);
-                            setUpdateCounter(updateCounter + 1);
-                            setFileError("");
-                        }
-                    );
-                }
-            );
-        });
+                    setFormData(JSON.parse(JSON.stringify(config)));
+                    setPreviews([]);
+                    setSelectedImages([]);
+                    setIsUploading(false);
+                    setUpdateCounter(updateCounter + 1);
+                    setFileError("");
+                });
+            }
+        );
     };
 
     return (
@@ -214,11 +230,11 @@ const FirebaseUploadGallery = ({
                                     }}
                                 >
                                     <div>
-                                    <img
-                                        src={preview}
-                                        alt="image preview"
-                                        height="100px"
-                                    />
+                                        <img
+                                            src={preview}
+                                            alt="image preview"
+                                            height="100px"
+                                        />
                                     </div>
                                     <Button
                                         variant="contained"
@@ -237,19 +253,35 @@ const FirebaseUploadGallery = ({
 
             {formData.fields.map((field, index) => {
                 return (
-                    <TextField
-                        InputLabelProps={{ shrink: true }}
-                        type={field.type}
-                        color="secondary"
-                        label={field.name}
-                        key={index}
-                        multiline={field.multiline}
-                        rows={field.rows}
-                        value={field.value}
-                        onChange={(e) => {
-                            handleFieldChange(e, field, index);
-                        }}
-                    />
+                    <Box key={index}>
+                        {field.type === "checkbox" ? (
+                            <FormControlLabel
+                                label={field.name}
+                                control={
+                                    <Checkbox
+                                        checked={field.value}
+                                        color="secondary"
+                                        onChange={(e) => {
+                                            handleFieldChange(e, field, index);
+                                        }}
+                                    />
+                                }
+                            />
+                        ) : (
+                            <TextField
+                                InputLabelProps={{ shrink: true }}
+                                type={field.type}
+                                color="secondary"
+                                label={field.name}
+                                multiline={field.multiline}
+                                rows={field.rows}
+                                value={field.value}
+                                onChange={(e) => {
+                                    handleFieldChange(e, field, index);
+                                }}
+                            />
+                        )}
+                    </Box>
                 );
             })}
 
@@ -257,8 +289,12 @@ const FirebaseUploadGallery = ({
                 variant="contained"
                 onClick={handleUpload}
                 disabled={isUploading}
-            >Upload</Button>
-            {fileError !== "false" && <Typography className="admin-error">{fileError}</Typography>}
+            >
+                Upload
+            </Button>
+            {fileError !== "false" && (
+                <Typography className="admin-error">{fileError}</Typography>
+            )}
         </Box>
     );
 };

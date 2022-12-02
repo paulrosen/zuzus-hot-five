@@ -1,4 +1,4 @@
-import { Button, Grid, Typography } from "@mui/material";
+import { Button, Grid, List, ListItem, Typography } from "@mui/material";
 import { Box, Container } from "@mui/system";
 import Link from "next/link";
 import React from "react";
@@ -57,30 +57,31 @@ const MusicPreview = ({ reverse, variation }) => {
                                 </Typography>
 
                                 <br />
-                                {musicContent.songs
-                                    .slice(0, 3)
-                                    .map((song, index) => {
-                                        return (
-                                            <Box
-                                                key={index}
-                                                sx={{
-                                                    margin: ".5rem 0",
-                                                    display: "flex",
-                                                    flexDirection: "column",
-                                                    alignItems: "end",
-                                                }}
-                                            >
-                                                <Typography variant="text">
-                                                    {song.name}
-                                                </Typography>
-                                                <ReactAudioPlayer
+                                <List>
+                                    {musicContent.songs
+                                        .slice(0, 3)
+                                        .map((song, index) => {
+                                            return (
+                                                <ListItem
                                                     key={index}
-                                                    src={song.url}
-                                                    controls
-                                                />
-                                            </Box>
-                                        );
-                                    })}
+                                                    sx={{
+                                                        display: "flex",
+                                                        flexDirection: "column",
+                                                        alignItems: "end",
+                                                    }}
+                                                >
+                                                    <Typography variant="text">
+                                                        {song.name}
+                                                    </Typography>
+                                                    <ReactAudioPlayer
+                                                        key={index}
+                                                        src={song.url}
+                                                        controls
+                                                    />
+                                                </ListItem>
+                                            );
+                                        })}
+                                </List>
                                 <br />
                             </Box>
                         </Box>

@@ -10,10 +10,11 @@ const DecorativeHeader = ({ image, text }) => {
                     display: "flex",
                     justifyContent: "center",
                     // marginBottom: "2rem",
-                    transform: "scaleY(-1)",
+                    // transform: "scaleY(-1)",
+                    opacity: "80%",
                 }}
             >
-                <img src={image.url} alt="" className="decorator"/>
+                <img src={image.url} alt="" className="decorator" />
             </Box>
             <Typography variant="h2" sx={{ textAlign: "center" }}>
                 {text}
@@ -23,10 +24,11 @@ const DecorativeHeader = ({ image, text }) => {
                     display: "flex",
                     justifyContent: "center",
                     // marginBottom: "4rem",
-                    // transform: "scaleY(-1)",
+                    transform: "scaleY(-1)",
+                    opacity: "80%",
                 }}
             >
-                <img src={image.url} alt="" className="decorator"/>
+                <img src={image.url} alt="" className="decorator" />
             </Box>
         </Box>
     );
