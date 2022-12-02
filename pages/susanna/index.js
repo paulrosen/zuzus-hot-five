@@ -9,7 +9,6 @@ import FirebaseUploadEvent from "../../components/admin/FirebaseUploadEvent.js";
 import FirestoreGalleryListing from "../../components/admin/FirestoreGalleryListing.js";
 import FirestoreEventsListing from "../../components/admin/FirestoreEventsListing.js";
 import { eventConfig, galleryConfig } from "../../siteInfo";
-import PageLayout from "../../components/layout/PageLayout.js";
 import signUpEmail from "../../utility/signUpEmail.js";
 import loginEmail from "../../utility/loginEmail.js";
 import Meta from "../../components/home/Meta";
@@ -22,6 +21,9 @@ const Admin = () => {
     const [password, setPassword] = useState("");
     const [loginError, setLoginError] = useState(null);
     const [isGallery, setIsGallery] = useState(false);
+    const [eventFormData, setEventFormData] = useState(
+        JSON.parse(JSON.stringify(eventConfig))
+    );
 
     const handleSignIn = async () => {
         const user = await login();
@@ -164,6 +166,8 @@ const Admin = () => {
                                     <Grid item xs={12} md={6}>
                                         <FirebaseUploadEvent
                                             config={eventConfig}
+                                            eventFormData={eventFormData}
+                                            setEventFormData={setEventFormData}
                                             folder="events"
                                             updateCounter={updateCounter}
                                             setUpdateCounter={setUpdateCounter}
@@ -173,6 +177,7 @@ const Admin = () => {
                                         <FirestoreEventsListing
                                             // category={galleryConfig.category}
                                             config={eventConfig}
+                                            setEventFormData={setEventFormData}
                                             folder="events"
                                             updateCounter={updateCounter}
                                             setUpdateCounter={setUpdateCounter}

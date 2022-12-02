@@ -12,6 +12,7 @@ import { formatHtmlDate } from "../../utility/general";
 const FirestoreListingItem = ({
     folder,
     event,
+    setEventFormData,
     updateCounter,
     setUpdateCounter,
     setShownEvents,
@@ -48,9 +49,7 @@ const FirestoreListingItem = ({
     };
 
     const handleDuplicate = () => {
-        const fields = event.data().fields
-        console.log(fields)
-        // TODO-PER: how do I set these values on the "add event" form?
+        setEventFormData(event.data())
     };
 
     const handleFieldChange = (e, field, index) => {
@@ -72,6 +71,13 @@ const FirestoreListingItem = ({
         });
     };
 
+    const getFieldValue = (name) => {
+        const field = event.data().fields.find(f => f.name === name)
+        if (field)
+            return field.value
+        return "";    
+    };
+
     return (
         <Box>
             {!isExpanded ? (
@@ -87,8 +93,8 @@ const FirestoreListingItem = ({
                     onClick={handleExpand}
                 >
                     <div>
-                    <Typography>{event.data().fields[0].value} <b>{formatHtmlDate(event.data().fields[4].value)}</b></Typography>
-                    <Typography>{event.data().fields[2].value}</Typography>
+                    <Typography>{event.data().fields[0].value} <b>{formatHtmlDate(getFieldValue("Date"))}</b></Typography>
+                    <Typography>{getFieldValue("Venue")}</Typography>
                     </div>
                     <ExpandMoreIcon />
                 </Box>

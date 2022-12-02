@@ -7,31 +7,30 @@ import { db } from "../../firebase";
 
 const FirebaseUploadEvent = ({
     config,
+    eventFormData,
+    setEventFormData,
     folder,
     updateCounter,
     setUpdateCounter,
 }) => {
-    const [formData, setFormData] = useState(
-        JSON.parse(JSON.stringify(config))
-    );
     const [isUploading, setIsUploading] = useState(false);
     const [fileError, setFileError] = useState([]);
 
     const handleFieldChange = (e, field, index) => {
         const newFieldData = {
-            ...formData.fields[index],
+            ...eventFormData.fields[index],
             value: e.target.value,
         };
 
-        let newFormDataFields = formData.fields;
+        let newFormDataFields = eventFormData.fields;
         newFormDataFields[index] = newFieldData;
-        setFormData({ ...formData, fields: newFormDataFields });
+        setEventFormData({ ...eventFormData, fields: newFormDataFields });
     };
 
     const handleUpload = async () => {
         const errors = [];
         let date = "";
-        formData.fields.forEach(field => {
+        eventFormData.fields.forEach(field => {
             if (field.value === "https://")
                 field.value = ""
             if (field.required && !field.value)
@@ -46,12 +45,12 @@ const FirebaseUploadEvent = ({
         }
 
         addDoc(collection(db, folder), {
-            ...formData,
+            ...eventFormData,
             dateUploaded: Date.now(),
             startDate: date,
         });
 
-        setFormData(JSON.parse(JSON.stringify(config)));
+        setEventFormData(JSON.parse(JSON.stringify(config)));
 
         setIsUploading(false);
         setUpdateCounter(updateCounter + 1);
@@ -75,7 +74,7 @@ const FirebaseUploadEvent = ({
                 Add Event
             </Typography>
 
-            {formData.fields.map((field, index) => {
+            {eventFormData.fields.map((field, index) => {
                 return (
                     <TextField
                         InputLabelProps={{ shrink: true }}
