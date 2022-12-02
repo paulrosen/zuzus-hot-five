@@ -102,6 +102,7 @@ const galleryConfig = {
     fields: [
         { name: "Alt", type: "text", value: "" },
         { name: "Credit", type: "text", value: "" },
+        { name: "Order", type: "number", value: "" },
         { name: "Shown", type: "checkbox", value: true },
     ],
 };

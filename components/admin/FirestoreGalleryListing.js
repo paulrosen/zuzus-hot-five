@@ -12,7 +12,7 @@ const FirestoreGalleryListing = ({ folder, updateCounter, setUpdateCounter }) =>
         setCurrentSearch(e.target.value)
         if (e.target.value === "") {
             setShownImages(images);
-            return;
+        return;
         }
         let newShownImages = images.filter((image) =>
             image.fields[0].value

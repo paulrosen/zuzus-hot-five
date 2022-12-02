@@ -7,7 +7,6 @@ import { deleteDoc, doc, setDoc } from "firebase/firestore";
 import { useState } from "react";
 import ButtonWithConfirm from "../general/ButtonWithConfirm";
 import theme from "../../styles/themes/theme";
-import Image from "next/image";
 
 const FirestoreListingItem = ({
     folder,
@@ -56,7 +55,20 @@ const FirestoreListingItem = ({
         };
         let newFormDataFields = formData.fields;
         newFormDataFields[index] = newFieldData;
-        setFormData({ ...formData, fields: newFormDataFields });
+
+        let order = formData.order;
+        if (formData.fields[index].name === "Order") {
+            order = parseInt(e.target.value, 10);
+        }
+        let shown = formData.shown;
+        if (formData.fields[index].name === "Shown") {
+            shown = e.target.value === "true";
+        }
+        setFormData({ ...formData, 
+            fields: newFormDataFields,
+            order: order,
+            shown: shown
+         });
     };
 
     return (
