@@ -3,7 +3,7 @@ import { Box } from "@mui/system";
 import { useState } from "react";
 import login from "../../utility/login.js";
 import { doc, getDoc } from "firebase/firestore";
-import { db } from "../../firebase.js";
+import { auth, db } from "../../firebase.js";
 import FirebaseUploadGallery from "../../components/admin/FirebaseUploadGallery.js";
 import FirebaseUploadEvent from "../../components/admin/FirebaseUploadEvent.js";
 import FirestoreGalleryListing from "../../components/admin/FirestoreGalleryListing.js";
@@ -12,6 +12,7 @@ import { eventConfig, galleryConfig } from "../../siteInfo";
 import signUpEmail from "../../utility/signUpEmail.js";
 import loginEmail from "../../utility/loginEmail.js";
 import Meta from "../../components/home/Meta";
+import { sendPasswordResetEmail } from "firebase/auth";
 
 const Admin = () => {
     const [isAdmin, setIsAdmin] = useState(false);
@@ -21,6 +22,7 @@ const Admin = () => {
     const [password, setPassword] = useState("");
     const [loginError, setLoginError] = useState(null);
     const [isGallery, setIsGallery] = useState(false);
+    const [passwordEmailSent, setPasswordEmailSent] = useState(false);
     const [eventFormData, setEventFormData] = useState(
         JSON.parse(JSON.stringify(eventConfig))
     );
@@ -56,6 +58,22 @@ const Admin = () => {
         }
     };
 
+    const handleSendPasswordResetEmail = () => {
+        if (!email) {
+            console.log("nope");
+        }
+        sendPasswordResetEmail(auth, email)
+            .then(() => {
+                setPasswordEmailSent(true);
+            })
+            .catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                console.log(errorMessage);
+                // ..
+            });
+    };
+
     const handleEmailChange = (e) => {
         setEmail(e.target.value);
     };
@@ -73,7 +91,7 @@ const Admin = () => {
             <br />
             <br />
             <Box>
-                {!isLoggedIn && (
+                {!isLoggedIn && !passwordEmailSent && (
                     <Container maxWidth="sm">
                         <form className="login-form">
                             <TextField
@@ -117,9 +135,20 @@ const Admin = () => {
                                 >
                                     Log in
                                 </Button>
+
+                                <Button
+                                    color="secondary"
+                                    onClick={handleSendPasswordResetEmail}
+                                    sx={{ marginBottom: "1rem" }}
+                                >
+                                    Forgot Password?
+                                </Button>
                             </Box>
                         </form>
                     </Container>
+                )}
+                {passwordEmailSent && (
+                    <Typography>Password reset email sent!</Typography>
                 )}
                 {isAdmin ? (
                     <Box sx={{ marginBottom: "3rem" }}>
