@@ -59,18 +59,17 @@ const Admin = () => {
     };
 
     const handleSendPasswordResetEmail = () => {
-        if (!email) {
-            console.log("nope");
-        }
         sendPasswordResetEmail(auth, email)
             .then(() => {
                 setPasswordEmailSent(true);
             })
             .catch((error) => {
-                const errorCode = error.code;
-                const errorMessage = error.message;
-                console.log(errorMessage);
-                // ..
+                // Don't tell the user it failed. Maybe they can't guess the valid accounts.
+                // Note: the user can still look at the network tab and see an error, but at least this is a little security.
+                setPasswordEmailSent(true);
+                // const errorCode = error.code;
+                // const errorMessage = error.message;
+                // console.log(errorMessage);
             });
     };
 
@@ -148,7 +147,7 @@ const Admin = () => {
                     </Container>
                 )}
                 {passwordEmailSent && (
-                    <Typography>Password reset email sent!</Typography>
+                    <Typography>A password reset email was sent to the email entered above.</Typography>
                 )}
                 {isAdmin ? (
                     <Box sx={{ marginBottom: "3rem" }}>
